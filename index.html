@@ -2,1022 +2,1080 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>LUMINA PRO | Thời trang 3D Siêu Mượt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="description" content="High-end gaming accounts marketplace - Tài khoản game cao cấp, uy tín, bảo hành trọn đời.">
+  <meta name="theme-color" content="#0a0a0f">
+  <title>NOVA ACC | Tài khoản game cao cấp • Cyberpunk Market</title>
+  <!-- Font Awesome 6 (modern icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --gold: #d4af37;
-      --gold-dark: #b8860b;
-      --gold-light: #f5e6a3;
-      --bg: #0a0a0a;
-      --card-bg: rgba(20, 20, 20, 0.95);
-      --text: #ffffff;
-      --text-secondary: #b0b0b0;
-      --transition-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
-      --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      perspective: 1200px;
-      perspective-origin: 50% 50%;
-    }
-
-    /* Tối ưu performance */
-    .will-change-transform {
-      will-change: transform;
-    }
-
-    .will-change-opacity {
-      will-change: opacity;
-    }
-
-    @keyframes floatGentle {
-      0%, 100% { transform: translate3d(0, 0, 0); }
-      50% { transform: translate3d(0, -10px, 20px); }
-    }
-
-    @keyframes glowPulse {
-      0%, 100% { 
-        box-shadow: 0 0 20px rgba(212, 175, 55, 0.2), 0 10px 40px rgba(0, 0, 0, 0.5);
-      }
-      50% { 
-        box-shadow: 0 0 40px rgba(212, 175, 55, 0.4), 0 20px 60px rgba(0, 0, 0, 0.7);
-      }
-    }
-
-    @keyframes shimmer {
-      0% { transform: translate3d(-100%, 0, 0); }
-      100% { transform: translate3d(100%, 0, 0); }
-    }
-
-    @keyframes fadeInUp {
-      from { 
-        opacity: 0; 
-        transform: translate3d(0, 30px, 0); 
-      }
-      to { 
-        opacity: 1; 
-        transform: translate3d(0, 0, 0); 
-      }
-    }
-
-    @keyframes particleDrift {
-      0% { 
-        transform: translate3d(0, 0, 0) scale(1); 
-        opacity: 0; 
-      }
-      20% { 
-        opacity: 0.8; 
-      }
-      100% { 
-        transform: translate3d(100px, -100vh, 0) scale(0); 
-        opacity: 0; 
-      }
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-      transform-style: preserve-3d;
-    }
-
-    /* ===== HEADER GLASSMORPHISM ===== */
-    header {
-      padding: 16px 0;
-      background: rgba(10, 10, 10, 0.75);
-      backdrop-filter: blur(30px) saturate(180%);
-      -webkit-backdrop-filter: blur(30px) saturate(180%);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-      transform: translate3d(0, 0, 50px);
-      transition: all 0.4s var(--transition-smooth);
-    }
-
-    header:hover {
-      background: rgba(10, 10, 10, 0.85);
-      border-bottom-color: rgba(212, 175, 55, 0.3);
-    }
-
-    .nav-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      cursor: pointer;
-      transition: all 0.4s var(--transition-bounce);
-      transform-style: preserve-3d;
-      filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
-    }
-
-    .logo:hover {
-      transform: translate3d(0, -2px, 30px) scale(1.05);
-      filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.6));
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-secondary);
-      font-weight: 500;
-      font-size: 0.9rem;
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: all 0.3s var(--transition-smooth);
-      position: relative;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold);
-      background: rgba(212, 175, 55, 0.1);
-      transform: translate3d(0, -2px, 10px);
-    }
-
-    .btn-login {
-      background: rgba(212, 175, 55, 0.1);
-      border: 1.5px solid rgba(212, 175, 55, 0.4);
-      color: var(--gold);
-      padding: 10px 24px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.4s var(--transition-bounce);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-login::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-      opacity: 0;
-      transition: opacity 0.4s var(--transition-smooth);
-      border-radius: 50px;
-    }
-
-    .btn-login:hover {
-      border-color: var(--gold);
-      transform: translate3d(0, -3px, 30px);
-      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
-    }
-
-    .btn-login:hover::after {
-      opacity: 1;
-    }
-
-    .btn-login span {
-      position: relative;
-      z-index: 1;
-      transition: color 0.3s;
-    }
-
-    .btn-login:hover span {
-      color: #000;
-    }
-
-    .btn-login i {
-      position: relative;
-      z-index: 1;
-      transition: color 0.3s;
-    }
-
-    .btn-login:hover i {
-      color: #000;
-    }
-
-    /* ===== HERO SECTION ===== */
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 80px 0 100px;
-      gap: 50px;
-      flex-wrap: wrap;
-      transform-style: preserve-3d;
-    }
-
-    .hero-text {
-      flex: 1 1 400px;
-      transform-style: preserve-3d;
-      animation: fadeInUp 0.8s var(--transition-smooth) forwards;
-    }
-
-    .hero-text h1 {
-      font-size: 4.5rem;
-      font-weight: 800;
-      line-height: 1.05;
-      background: linear-gradient(to right, #ffffff 0%, #d4af37 50%, #f5e6a3 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: shimmer 4s linear infinite;
-      margin-bottom: 20px;
-    }
-
-    .hero-text p {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      margin-bottom: 35px;
-      line-height: 1.6;
-    }
-
-    .btn-shop {
-      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-      border: none;
-      color: #000;
-      padding: 18px 40px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.05rem;
-      cursor: pointer;
-      transition: all 0.5s var(--transition-bounce);
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 15px 40px rgba(184, 134, 11, 0.4);
-      position: relative;
-      overflow: hidden;
-      transform-style: preserve-3d;
-    }
-
-    .btn-shop::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-      transition: left 0.7s var(--transition-smooth);
-    }
-
-    .btn-shop:hover {
-      transform: translate3d(0, -5px, 40px) scale(1.05);
-      box-shadow: 0 25px 60px rgba(212, 175, 55, 0.6);
-    }
-
-    .btn-shop:hover::before {
-      left: 100%;
-    }
-
-    .hero-image {
-      flex: 1 1 400px;
-      transform-style: preserve-3d;
-      transition: transform 0.6s var(--transition-smooth);
-    }
-
-    .hero-image img {
-      width: 100%;
-      max-width: 500px;
-      border-radius: 30px;
-      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(212, 175, 55, 0.2);
-      transition: all 0.6s var(--transition-smooth);
-      transform-style: preserve-3d;
-      animation: glowPulse 4s ease-in-out infinite;
-    }
-
-    /* ===== PRODUCTS GRID ===== */
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin: 80px 0 50px;
-      text-align: center;
-      animation: fadeInUp 0.8s var(--transition-smooth) forwards;
-    }
-
-    .section-title span {
-      background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 35px;
-      margin-bottom: 80px;
-      transform-style: preserve-3d;
-    }
-
-    .product-card {
-      background: var(--card-bg);
-      border-radius: 24px;
-      padding: 24px;
-      border: 1px solid rgba(212, 175, 55, 0.15);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-      transition: box-shadow 0.4s var(--transition-smooth), border-color 0.4s var(--transition-smooth);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transform-style: preserve-3d;
-      backdrop-filter: blur(10px);
-      will-change: transform;
-      animation: fadeInUp 0.6s var(--transition-smooth) forwards;
-    }
-
-    .product-card:nth-child(1) { animation-delay: 0.1s; }
-    .product-card:nth-child(2) { animation-delay: 0.2s; }
-    .product-card:nth-child(3) { animation-delay: 0.3s; }
-    .product-card:nth-child(4) { animation-delay: 0.4s; }
-
-    .product-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15), transparent 70%);
-      opacity: 0;
-      transition: opacity 0.5s var(--transition-smooth);
-    }
-
-    .product-card:hover::before {
-      opacity: 1;
-    }
-
-    .product-card:hover {
-      border-color: rgba(212, 175, 55, 0.6);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 50px rgba(212, 175, 55, 0.3);
-    }
-
-    .product-img {
-      width: 100%;
-      border-radius: 18px;
-      height: 240px;
-      object-fit: cover;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      transition: transform 0.5s var(--transition-bounce), box-shadow 0.5s var(--transition-smooth);
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-
-    .product-card:hover .product-img {
-      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
-    }
-
-    .product-card h3 {
-      font-weight: 600;
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-      color: #fff;
-    }
-
-    .price {
-      font-weight: 700;
-      color: var(--gold);
-      font-size: 1.4rem;
-      margin: 10px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .price::before {
-      content: '◆';
-      font-size: 0.7rem;
-      animation: floatGentle 3s ease-in-out infinite;
-      display: inline-block;
-    }
-
-    .btn-add {
-      background: rgba(212, 175, 55, 0.15);
-      border: 1.5px solid rgba(212, 175, 55, 0.3);
-      padding: 14px 24px;
-      border-radius: 30px;
-      font-weight: 600;
-      width: 100%;
-      cursor: pointer;
-      transition: all 0.4s var(--transition-bounce);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: var(--gold);
-      backdrop-filter: blur(5px);
-    }
-
-    .btn-add:hover {
-      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-      color: #000;
-      border-color: var(--gold);
-      transform: translate3d(0, -3px, 20px);
-      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
-    }
-
-    /* ===== CONTACT BAR ===== */
-    .contact-bar {
-      background: rgba(20, 20, 20, 0.8);
-      backdrop-filter: blur(20px);
-      border-radius: 60px;
-      padding: 14px 30px;
-      display: inline-flex;
-      align-items: center;
-      gap: 30px;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-      margin: 35px 0 25px;
-      flex-wrap: wrap;
-      justify-content: center;
-      transition: all 0.5s var(--transition-smooth);
-      transform-style: preserve-3d;
-    }
-
-    .contact-bar:hover {
-      border-color: rgba(212, 175, 55, 0.5);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.2);
-      transform: translate3d(0, -5px, 40px);
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 500;
-      cursor: pointer;
-      padding: 8px 16px;
-      border-radius: 30px;
-      transition: all 0.3s var(--transition-bounce);
-      transform-style: preserve-3d;
-    }
-
-    .contact-item:hover {
-      background: rgba(212, 175, 55, 0.15);
-      transform: translate3d(0, -2px, 15px) scale(1.05);
-    }
-
-    .contact-item i {
-      font-size: 1.3rem;
-      color: var(--gold);
-      transition: transform 0.3s var(--transition-bounce);
-    }
-
-    .contact-item:hover i {
-      transform: scale(1.2);
-    }
-
-    /* ===== MODAL 3D ===== */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(20px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      visibility: hidden;
-      opacity: 0;
-      transition: all 0.5s var(--transition-smooth);
-      perspective: 1200px;
-    }
-
-    .modal-overlay.active {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .login-modal {
-      background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
-      border-radius: 36px;
-      max-width: 440px;
-      width: 90%;
-      padding: 45px 35px;
-      border: 2px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 50px 100px rgba(0, 0, 0, 0.9), 0 0 80px rgba(212, 175, 55, 0.2);
-      transform: rotateX(-90deg) translate3d(0, 0, -200px);
-      transition: all 0.7s var(--transition-bounce);
-      position: relative;
-      overflow: hidden;
-      transform-style: preserve-3d;
-    }
-
-    .modal-overlay.active .login-modal {
-      transform: rotateX(0deg) translate3d(0, 0, 0);
-    }
-
-    .login-modal::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
-      animation: shimmer 3s linear infinite;
-    }
-
-    .login-modal h2 {
-      font-size: 2rem;
-      margin-bottom: 12px;
-      text-align: center;
-      color: var(--gold);
-    }
-
-    .input-group {
-      margin: 24px 0;
-      position: relative;
-    }
-
-    .input-group i {
-      position: absolute;
-      left: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--gold);
-      font-size: 1.1rem;
-      z-index: 1;
-      transition: transform 0.3s var(--transition-bounce);
-    }
-
-    .input-group:focus-within i {
-      transform: translateY(-50%) scale(1.2);
-    }
-
-    .input-group input {
-      width: 100%;
-      padding: 16px 20px 16px 50px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1.5px solid rgba(212, 175, 55, 0.25);
-      border-radius: 40px;
-      font-size: 1rem;
-      outline: none;
-      transition: all 0.4s var(--transition-smooth);
-      color: #fff;
-      backdrop-filter: blur(10px);
-    }
-
-    .input-group input:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-      background: rgba(255, 255, 255, 0.08);
-      transform: translate3d(0, -2px, 10px);
-    }
-
-    .btn-login-submit {
-      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-      border: none;
-      color: #000;
-      width: 100%;
-      padding: 18px;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 1.05rem;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: all 0.5s var(--transition-bounce);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-login-submit::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-      transition: left 0.7s var(--transition-smooth);
-    }
-
-    .btn-login-submit:hover::after {
-      left: 100%;
-    }
-
-    .btn-login-submit:hover {
-      transform: translate3d(0, -3px, 30px) scale(1.03);
-      box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5);
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 18px;
-      right: 24px;
-      background: transparent;
-      border: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: var(--text-secondary);
-      transition: all 0.4s var(--transition-bounce);
-      z-index: 2;
-    }
-
-    .close-modal:hover {
-      color: var(--gold);
-      transform: rotate(90deg) scale(1.1);
-    }
-
-    /* ===== PARTICLES ===== */
-    .particles-container {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .particle {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--gold);
-      will-change: transform, opacity;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: #666;
-      background: linear-gradient(to top, rgba(10,10,10,1), transparent);
-      margin-top: 60px;
-      font-size: 0.9rem;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .hero-text h1 {
-        font-size: 3rem;
-      }
-      .nav-links {
-        gap: 16px;
-      }
-      .contact-bar {
-        gap: 15px;
-        padding: 12px 20px;
-      }
-    }
-
-    /* Tối ưu animation cho thiết bị yếu */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
+  <!-- Google Fonts: Orbitron & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- CSS chính -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Particles Container -->
-  <div class="particles-container" id="particlesContainer"></div>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loader-content">
+      <div class="cyber-spinner"></div>
+      <p class="glitch-text" data-text="ĐANG TẢI HỆ THỐNG">ĐANG TẢI HỆ THỐNG</p>
+    </div>
+  </div>
 
-  <header>
-    <div class="container nav-bar">
-      <div class="logo will-change-transform">
-        <i class="fas fa-gem"></i> LUMINA
+  <!-- Custom Cursor Glow (desktop) -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- Header cố định -->
+  <header id="header" class="header glass">
+    <div class="container header-container">
+      <div class="logo">
+        <span class="logo-icon"><i class="fas fa-crown"></i></span>
+        <span class="logo-text">NOVA<span class="text-neon">.ACC</span></span>
       </div>
-      <div class="nav-links">
-        <a href="#">Trang chủ</a>
-        <a href="#">Bộ sưu tập</a>
-        <a href="#">Về chúng tôi</a>
-        <button class="btn-login will-change-transform" id="openLoginBtn">
-          <i class="far fa-user-circle"></i>
-          <span>Đăng nhập</span>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active">Trang chủ</a>
+        <a href="#categories" class="nav-link">Danh mục</a>
+        <a href="#products" class="nav-link">Sản phẩm</a>
+        <a href="#services" class="nav-link">Dịch vụ</a>
+        <a href="#news" class="nav-link">Tin tức</a>
+        <a href="#contact" class="nav-link">Liên hệ</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box glass">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Tìm acc..." id="search-input">
+        </div>
+        <button class="btn-glass btn-login" id="login-btn"><i class="fas fa-user-shield"></i> <span>Đăng nhập</span></button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="hero-text will-change-transform" id="heroText">
-        <h1>Phong cách<br>Vượt thời gian</h1>
-        <p>Khám phá bộ sưu tập mới với chất liệu cao cấp. Trải nghiệm mua sắm 3D mượt mà.</p>
-        <button class="btn-shop will-change-transform" onclick="scrollToProducts()">
-          <i class="fas fa-shopping-bag"></i> Mua sắm ngay
-        </button>
-        <div class="contact-bar will-change-transform">
-          <div class="contact-item"><i class="fas fa-phone-alt"></i> <span>0988 123 456</span></div>
-          <div class="contact-item"><i class="fab fa-whatsapp"></i> <span>Zalo Chat</span></div>
-          <div class="contact-item"><i class="far fa-envelope"></i> <span>lumina@pro.vn</span></div>
+  <main>
+    <!-- HERO với particles -->
+    <section id="home" class="hero">
+      <canvas id="particle-canvas"></canvas>
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="gradient-text">TÀI KHOẢN GAME</span><br>
+          <span class="neon-glow">ĐẲNG CẤP HUYỀN THOẠI</span>
+        </h1>
+        <p class="hero-desc">Săn acc siêu hiếm • Bảo hành trọn đời • Giao dịch tức thì</p>
+        <div class="hero-buttons">
+          <button class="btn-neon ripple">Mua ngay</button>
+          <button class="btn-glass ripple">Xem sản phẩm <i class="fas fa-arrow-right"></i></button>
         </div>
       </div>
-      <div class="hero-image will-change-transform" id="heroImage">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop&q=80" 
-             alt="Người mẫu thời trang" 
-             loading="lazy">
+      <div class="scroll-indicator">
+        <span>CUỘN XUỐNG</span>
+        <i class="fas fa-chevron-down"></i>
       </div>
     </section>
 
-    <div id="productsSection">
-      <h2 class="section-title"><span>✦ Sản phẩm nổi bật ✦</span></h2>
-      <div class="product-grid">
-        <div class="product-card" data-tilt>
-          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&auto=format&fit=crop&q=80" 
-               alt="Áo khoác dạ" class="product-img" loading="lazy">
-          <h3>Áo khoác dạ lông cừu</h3>
-          <div class="price">2.490.000₫</div>
-          <button class="btn-add"><i class="fas fa-cart-plus"></i> Thêm vào giỏ</button>
+    <!-- DANH MỤC -->
+    <section id="categories" class="section categories">
+      <div class="container">
+        <h2 class="section-title"><span class="gradient-text">DANH MỤC</span> GAME</h2>
+        <div class="category-grid" id="category-grid"></div>
+      </div>
+    </section>
+
+    <!-- BỘ LỌC + SẢN PHẨM -->
+    <section id="products" class="section products">
+      <div class="container">
+        <h2 class="section-title"><span class="gradient-text">SẢN PHẨM</span> NỔI BẬT</h2>
+        <!-- Bộ lọc realtime -->
+        <div class="filter-bar glass">
+          <div class="filter-group">
+            <label><i class="fas fa-gamepad"></i> Game</label>
+            <select id="filter-game">
+              <option value="all">Tất cả</option>
+              <option value="freefire">Free Fire</option>
+              <option value="lienquan">Liên Quân</option>
+              <option value="pubg">PUBG Mobile</option>
+              <option value="valorant">Valorant</option>
+              <option value="roblox">Roblox</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label><i class="fas fa-dollar-sign"></i> Giá</label>
+            <select id="filter-price">
+              <option value="all">Tất cả</option>
+              <option value="low">Dưới 500k</option>
+              <option value="mid">500k - 2 triệu</option>
+              <option value="high">Trên 2 triệu</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label><i class="fas fa-star"></i> Rank</label>
+            <select id="filter-rank">
+              <option value="all">Tất cả</option>
+              <option value="cao">Cao thủ</option>
+              <option value="tc">Thách đấu</option>
+              <option value="top">Top server</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label><i class="fas fa-level-up-alt"></i> Level</label>
+            <select id="filter-level">
+              <option value="all">Tất cả</option>
+              <option value="50">50+</option>
+              <option value="70">70+</option>
+              <option value="max">Max</option>
+            </select>
+          </div>
         </div>
-        <div class="product-card" data-tilt>
-          <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&auto=format&fit=crop&q=80" 
-               alt="Túi xách da" class="product-img" loading="lazy">
-          <h3>Túi xách da bò Ý</h3>
-          <div class="price">5.990.000₫</div>
-          <button class="btn-add"><i class="fas fa-cart-plus"></i> Thêm vào giỏ</button>
-        </div>
-        <div class="product-card" data-tilt>
-          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&auto=format&fit=crop&q=80" 
-               alt="Áo thun premium" class="product-img" loading="lazy">
-          <h3>Áo thun cotton Ai Cập</h3>
-          <div class="price">890.000₫</div>
-          <button class="btn-add"><i class="fas fa-cart-plus"></i> Thêm vào giỏ</button>
-        </div>
-        <div class="product-card" data-tilt>
-          <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&auto=format&fit=crop&q=80" 
-               alt="Giày sneaker" class="product-img" loading="lazy">
-          <h3>Giày sneaker da lộn</h3>
-          <div class="price">3.200.000₫</div>
-          <button class="btn-add"><i class="fas fa-cart-plus"></i> Thêm vào giỏ</button>
+        <div class="product-grid" id="product-grid"></div>
+      </div>
+    </section>
+
+    <!-- THỐNG KÊ -->
+    <section class="section stats" id="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item glass">
+            <i class="fas fa-database"></i>
+            <span class="counter" data-target="12847">0</span>
+            <span>Tài khoản</span>
+          </div>
+          <div class="stat-item glass">
+            <i class="fas fa-users"></i>
+            <span class="counter" data-target="9362">0</span>
+            <span>Khách hàng</span>
+          </div>
+          <div class="stat-item glass">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="counter" data-target="18421">0</span>
+            <span>Đơn hàng</span>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- ĐÁNH GIÁ -->
+    <section class="section reviews">
+      <div class="container">
+        <h2 class="section-title"><span class="gradient-text">KHÁCH HÀNG</span> NÓI GÌ</h2>
+        <div class="reviews-grid" id="reviews-grid"></div>
+      </div>
+    </section>
   </main>
 
-  <!-- Modal Login -->
-  <div class="modal-overlay" id="loginModal">
-    <div class="login-modal">
-      <button class="close-modal" id="closeModalBtn">&times;</button>
-      <h2>✨ Đăng nhập VIP</h2>
-      <p style="color:#b0b0b0; margin-bottom:20px; text-align:center;">Trải nghiệm mượt mà</p>
-      <div class="input-group">
-        <i class="far fa-envelope"></i>
-        <input type="email" placeholder="Email của bạn" id="emailInput" autocomplete="email">
+  <!-- FOOTER -->
+  <footer id="contact" class="footer glass">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3>NOVA<span class="text-neon">.ACC</span></h3>
+        <p>Thị trường tài khoản game hàng đầu Việt Nam.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
       </div>
-      <div class="input-group">
-        <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Mật khẩu" id="passwordInput" autocomplete="current-password">
+      <div class="footer-links">
+        <a href="#">Điều khoản</a>
+        <a href="#">Chính sách</a>
+        <a href="#">Hỗ trợ</a>
+        <a href="#">Liên hệ</a>
       </div>
-      <button class="btn-login-submit" id="submitLogin">
-        <i class="fas fa-sign-in-alt"></i> Đăng nhập
-      </button>
-      <p style="text-align:center; margin-top:20px; font-size:0.9rem; color:#888;">
-        Chưa có tài khoản? <a href="#" style="color:#d4af37; font-weight:600;">Đăng ký VIP</a>
-      </p>
+      <p class="copyright">© 2025 NOVA.ACC - All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Popup chi tiết sản phẩm -->
+  <div id="detail-popup" class="popup-overlay">
+    <div class="popup glass">
+      <button class="popup-close" id="close-popup"><i class="fas fa-times"></i></button>
+      <div class="popup-content" id="popup-content"></div>
     </div>
   </div>
 
+  <!-- Giỏ hàng slide -->
+  <div id="cart-panel" class="cart-panel glass">
+    <div class="cart-header">
+      <h3><i class="fas fa-shopping-bag"></i> Giỏ hàng</h3>
+      <button id="close-cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer">
+      <p>Tổng: <strong id="cart-total">0đ</strong></p>
+      <button class="btn-neon">Thanh toán</button>
+    </div>
+  </div>
+
+  <!-- Nút nổi: Back to top + Cart toggle -->
+  <button id="back-to-top" class="floating-btn"><i class="fas fa-arrow-up"></i></button>
+  <button id="cart-toggle" class="floating-btn cart-float"><i class="fas fa-shopping-cart"></i><span class="cart-count" id="cart-count">0</span></button>
+
+  <!-- Toast container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>nt: center;
+      font-size: 0.7rem;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(232, 93, 58, 0.4);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin: 8px 0 5px;
+      color: #3e2c1b;
+      transition: color 0.3s ease;
+    }
+    .card:hover h3 {
+      color: #b68b40;
+    }
+    .card .desc {
+      color: #7b6b5a;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+    .price {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #6f4e37;
+      margin: 10px 0 16px;
+      transition: all 0.3s ease;
+    }
+    .card:hover .price {
+      color: #b68b40;
+      transform: scale(1.1);
+    }
+    .add-btn {
+      background: linear-gradient(135deg, #b68b40, #8b691b);
+      border: none;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 5px 15px rgba(184, 139, 64, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .add-btn:hover {
+      background: linear-gradient(135deg, #c9a24d, #9e7c2c);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(184, 139, 64, 0.5);
+    }
+    .add-btn:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0 50px;
+    }
+    .gallery-item {
+      border-radius: 28px;
+      overflow: hidden;
+      height: 250px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      animation: fadeInUp 0.8s ease-out both;
+    }
+    .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+    .gallery-item:nth-child(2) { animation-delay: 0.3s; }
+    .gallery-item:nth-child(3) { animation-delay: 0.5s; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.15) rotate(2deg);
+    }
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      padding: 25px 20px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Giỏ hàng */
+    .cart-panel {
+      background: white;
+      border-radius: 30px;
+      padding: 30px;
+      margin: 40px 0 60px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+      animation: fadeInUp 0.8s ease-out;
+      border: 1px solid #f0e4d4;
+    }
+    .cart-items {
+      margin: 15px 0;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ede0cf;
+      padding: 15px 0;
+      animation: fadeInRight 0.5s ease-out;
+      transition: all 0.3s ease;
+    }
+    .cart-item:hover {
+      background: #fdf9f3;
+      padding-left: 10px;
+      border-radius: 8px;
+    }
+    .remove-btn {
+      background: none;
+      border: none;
+      color: #c0392b;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      padding: 5px;
+      border-radius: 50%;
+    }
+    .remove-btn:hover {
+      color: #e74c3c;
+      background: rgba(231, 76, 60, 0.1);
+      transform: rotate(15deg) scale(1.2);
+    }
+    .total {
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-top: 2px solid #f0e4d4;
+    }
+    .checkout-btn {
+      background: linear-gradient(135deg, #3e2c1b, #5a3d2b);
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 40px;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 20px;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(62, 44, 27, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .checkout-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: shimmer 2s infinite;
+    }
+    .checkout-btn:hover {
+      background: linear-gradient(135deg, #5a402b, #6b4f3a);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(62, 44, 27, 0.5);
+    }
+
+    /* Modal đăng nhập/đặt hàng */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(5px);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal {
+      background: white;
+      border-radius: 30px;
+      padding: 35px 30px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+      animation: modalFadeIn 0.4s ease-out;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      background: #f5f0e8;
+      border: none;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #666;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-close:hover {
+      background: #e74c3c;
+      color: white;
+      transform: rotate(90deg);
+    }
+    .modal h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: #3e2c1b;
+      text-align: center;
+    }
+    .modal p {
+      text-align: center;
+      color: #7b6b5a;
+      margin-bottom: 25px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #4a3927;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e8d5ba;
+      border-radius: 15px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s;
+      background: #fefaf5;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #b68b40;
+      box-shadow: 0 0 0 3px rgba(184, 139, 64, 0.15);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .submit-order-btn {
+      background: linear-gradient(135deg, #b68b40, #8b691b);
+      border: none;
+      color: white;
+      padding: 16px;
+      border-radius: 30px;
+      font-weight: bold;
+      width: 100%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 8px 20px rgba(184, 139, 64, 0.4);
+    }
+    .submit-order-btn:hover {
+      background: linear-gradient(135deg, #c9a24d, #9e7c2c);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(184, 139, 64, 0.6);
+    }
+    .submit-order-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* Loading spinner */
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin-slow 0.8s linear infinite;
+      margin-right: 8px;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #b68b40, #8b691b);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 40px;
+      box-shadow: 0 10px 30px rgba(184, 139, 64, 0.4);
+      font-weight: 600;
+      z-index: 1000;
+      animation: slideInRight 0.5s ease-out, fadeOut 0.5s ease-out 3s forwards;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #6b5a47;
+      border-top: 1px solid #e2d2bd;
+      margin-top: 50px;
+      background: linear-gradient(180deg, transparent, rgba(184, 139, 64, 0.05));
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero {
+        min-height: 380px;
+      }
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+      .modal {
+        padding: 25px 20px;
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hạt cà phê trang trí -->
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: 0.03;">
+    <i class="fas fa-coffee" style="position: absolute; top: 10%; left: 5%; font-size: 4rem; animation: float 6s ease-in-out infinite;"></i>
+    <i class="fas fa-coffee" style="position: absolute; top: 70%; right: 8%; font-size: 5rem; animation: float 7s ease-in-out infinite 1s;"></i>
+    <i class="fas fa-coffee" style="position: absolute; top: 40%; left: 85%; font-size: 3.5rem; animation: float 5s ease-in-out infinite 0.5s;"></i>
+  </div>
+
+  <header>
+    <div class="header-inner container">
+      <div class="logo">
+        <i class="fas fa-mug-hot"></i> Hương Coffee
+      </div>
+      <nav>
+        <a href="#"><i class="fas fa-home"></i> Trang chủ</a>
+        <a href="#menu"><i class="fas fa-bars"></i> Menu</a>
+        <a href="#gallery"><i class="fas fa-images"></i> Không gian</a>
+        <a href="#cart-section"><i class="fas fa-shopping-bag"></i> Đặt hàng</a>
+        <div class="cart-icon" id="cart-toggle">
+          <i class="fas fa-shopping-cart"></i> Giỏ <span id="cart-count">0</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>☕ Chill cùng tách cà phê</h1>
+      <p>Không gian ấm cúng • Hương vị đậm đà • Giao hàng tận nơi</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- Menu Section -->
+    <div id="menu">
+      <h2 class="section-title"><i class="fas fa-leaf"></i> Thực đơn đặc biệt</h2>
+    </div>
+    <div class="menu-grid" id="menu-container"></div>
+
+    <!-- Gallery Section -->
+    <div id="gallery">
+      <h2 class="section-title"><i class="fas fa-camera-retro"></i> Không gian quán</h2>
+    </div>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Góc chill" loading="lazy">
+        <div class="gallery-overlay">🌿 Góc chill yên tĩnh - View phố</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Góc làm việc" loading="lazy">
+        <div class="gallery-overlay">💻 Góc làm việc sáng tạo</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ban công" loading="lazy">
+        <div class="gallery-overlay">🌅 Ban công lãng mạn</div>
+      </div>
+    </div>
+
+    <!-- Giỏ hàng -->
+    <div id="cart-section" class="cart-panel">
+      <h2 style="display: flex; align-items: center; gap: 10px;">
+        <i class="fas fa-receipt"></i> Giỏ hàng của bạn
+      </h2>
+      <div id="cart-items" class="cart-items">
+        <p style="color:#9b8c7c; padding:15px 0;">🛒 Giỏ hàng trống, hãy chọn món chill nhé.</p>
+      </div>
+      <div class="total" id="cart-total">Tổng cộng: 0₫</div>
+      <button class="checkout-btn" id="checkout-btn">
+        <i class="fas fa-credit-card"></i> Đặt hàng ngay
+      </button>
+    </div>
+  </main>
+
+  <!-- Modal đăng nhập / đặt hàng -->
+  <div class="modal-overlay" id="order-modal">
+    <div class="modal">
+      <button class="modal-close" id="modal-close">
+        <i class="fas fa-times"></i>
+      </button>
+      <h2>📋 Thông tin đặt hàng</h2>
+      <p>Vui lòng nhập số điện thoại và địa chỉ giao hàng</p>
+      
+      <form id="order-form">
+        <div class="form-group">
+          <label><i class="fas fa-user"></i> Họ và tên</label>
+          <input type="text" id="customer-name" placeholder="Nguyễn Văn A" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-phone"></i> Số điện thoại *</label>
+          <input type="tel" id="customer-phone" placeholder="0912345678" 
+                 pattern="[0-9]{10,11}" required
+                 title="Vui lòng nhập số điện thoại 10-11 chữ số">
+          <small style="color: #888; display: block; margin-top: 5px;">
+            🔐 Số điện thoại sẽ được dùng để xác nhận đơn hàng
+          </small>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-map-marker-alt"></i> Địa chỉ giao hàng *</label>
+          <textarea id="customer-address" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố" required></textarea>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-sticky-note"></i> Ghi chú (không bắt buộc)</label>
+          <textarea id="order-note" placeholder="Ví dụ: Ít đá, nhiều sữa, giao giờ hành chính..."></textarea>
+        </div>
+
+        <!-- Tóm tắt đơn hàng -->
+        <div style="background: #fefaf5; border-radius: 15px; padding: 15px; margin-bottom: 20px; border: 1px solid #f0e4d4;">
+          <strong style="display: block; margin-bottom: 10px;">🧾 Đơn hàng của bạn:</strong>
+          <div id="order-summary" style="font-size: 0.95rem; color: #4a3927;"></div>
+          <div style="border-top: 1px solid #e8d5ba; margin-top: 10px; padding-top: 10px; font-weight: 700; color: #b68b40;">
+            Tổng cộng: <span id="order-total-display">0₫</span>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-order-btn" id="submit-order-btn">
+          <i class="fas fa-paper-plane"></i> Xác nhận đặt hàng
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toast-container"></div>
+
   <footer>
-    <p>© 2025 LUMINA PRO - Tối ưu Performance • 60fps • 3D Smooth Experience</p>
+    <p style="font-size: 1.2rem; font-weight: 600;">© 2025 Hương Coffee Chill</p>
+    <p style="margin-top: 8px;"><i class="fas fa-clock"></i> Mở cửa: 7:00 - 22:00 • <i class="fas fa-phone"></i> 0900 123 456</p>
+    <p style="margin-top: 8px; opacity: 0.8;">✨ Đặt bàn & giao hàng tận nơi ✨</p>
+    <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px; font-size: 1.3rem;">
+      <i class="fab fa-facebook" style="cursor: pointer; transition: transform 0.3s; animation: float 4s ease-in-out infinite;"></i>
+      <i class="fab fa-instagram" style="cursor: pointer; transition: transform 0.3s; animation: float 4s ease-in-out infinite 0.5s;"></i>
+      <i class="fab fa-tiktok" style="cursor: pointer; transition: transform 0.3s; animation: float 4s ease-in-out infinite 1s;"></i>
+    </div>
   </footer>
 
   <script>
-    'use strict';
-
-    // ============ PERFORMANCE OPTIMIZED 3D TILT ============
-    const tiltElements = document.querySelectorAll('[data-tilt]');
-    let ticking = false;
-
-    function updateTilt(element, clientX, clientY) {
-      const rect = element.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const deltaX = (clientX - centerX) / (rect.width / 2);
-      const deltaY = (clientY - centerY) / (rect.height / 2);
+    (function() {
+      // ============ CONFIG ============
+      // Thay đổi URL webhook tại đây để nhận thông tin đơn hàng
+      const ADMIN_WEBHOOK_URL = 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'; // Thay bằng webhook Slack thật
+      // Hoặc dùng webhook khác:
+      // const ADMIN_WEBHOOK_URL = 'https://discord.com/api/webhooks/...';
+      // const ADMIN_WEBHOOK_URL = 'https://your-server.com/api/orders';
       
-      const rotateY = deltaX * 8;
-      const rotateX = -deltaY * 8;
-      const translateZ = 40 + Math.abs(deltaX) * 20;
-      
-      element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate3d(0, 0, ${translateZ}px)`;
-    }
+      // Số điện thoại admin nhận SMS (nếu tích hợp với dịch vụ SMS)
+      const ADMIN_PHONE = '0393515434'; // Thay số admin thật
+      // ===============================
 
-    function resetTilt(element) {
-      element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translate3d(0, 0, 0)';
-      element.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
-    }
+      const menuItems = [
+        { 
+          id: 1, 
+          name: "Espresso Đen", 
+          price: 45000, 
+          img: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", 
+          desc: "Đậm đà nguyên bản",
+          badge: "HOT"
+        },
+        { 
+          id: 2, 
+          name: "Cappuccino kem", 
+          price: 55000, 
+          img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", 
+          desc: "Bọt sữa mịn màng",
+          badge: "BEST"
+        },
+        { 
+          id: 3, 
+          name: "Latte Hạnh Nhân", 
+          price: 60000, 
+          img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", 
+          desc: "Ngọt thanh, thơm dịu",
+          badge: "NEW"
+        },
+        { 
+          id: 4, 
+          name: "Trà Đào Cam Sả", 
+          price: 50000, 
+          img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", 
+          desc: "Tươi mát, giải nhiệt",
+          badge: ""
+        },
+        { 
+          id: 5, 
+          name: "Bạc Xỉu Đá", 
+          price: 40000, 
+          img: "https://images.unsplash.com/photo-1530370629826-6eb2f4b3b4b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", 
+          desc: "Sữa nhiều, êm dịu",
+          badge: ""
+        },
+        { 
+          id: 6, 
+          name: "Cold Brew Táo", 
+          price: 65000, 
+          img: "https://images.unsplash.com/photo-1517959035875-5dcfb38bce34?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", 
+          desc: "Thanh mát, độc đáo",
+          badge: "COOL"
+        }
+      ];
 
-    tiltElements.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.style.transition = 'transform 0.15s cubic-bezier(0.25, 0.1, 0.25, 1)';
-      });
+      let cart = [];
 
-      card.addEventListener('mousemove', (e) => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            updateTilt(card, e.clientX, e.clientY);
-            ticking = false;
+      // ============ TOAST ============
+      function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle' };
+        toast.innerHTML = `<i class="fas ${icons[type] || icons.success}"></i> ${message}`;
+        container.appendChild(toast);
+        setTimeout(() => toast.remove(), 3500);
+      }
+
+      // ============ RENDER MENU ============
+      const menuContainer = document.getElementById('menu-container');
+      function renderMenu() {
+        menuContainer.innerHTML = menuItems.map(item => `
+          <div class="card">
+            <div class="card-image-wrapper">
+              <img src="${item.img}" alt="${item.name}" loading="lazy" 
+                   onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80';">
+              ${item.badge ? `<span class="card-badge">${item.badge}</span>` : ''}
+            </div>
+            <h3>${item.name}</h3>
+            <p class="desc">${item.desc || ''}</p>
+            <div class="price">${item.price.toLocaleString('vi-VN')}₫</div>
+            <button class="add-btn" data-id="${item.id}">
+              <i class="fas fa-plus-circle"></i> Thêm vào giỏ
+            </button>
+          </div>
+        `).join('');
+      }
+
+      // ============ UPDATE CART UI ============
+      function updateCartUI() {
+        const cartItemsDiv = document.getElementById('cart-items');
+        const cartCountSpan = document.getElementById('cart-count');
+        const cartTotalSpan = document.getElementById('cart-total');
+        
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCountSpan.textContent = totalItems;
+
+        if (totalItems > 0) {
+          cartCountSpan.style.animation = 'none';
+          cartCountSpan.offsetHeight;
+          cartCountSpan.style.animation = 'bounce 0.5s ease-out';
+        }
+
+        if (cart.length === 0) {
+          cartItemsDiv.innerHTML = '<p style="color:#9b8c7c; padding:15px 0;">🛒 Giỏ hàng trống, hãy chọn món chill nhé.</p>';
+          cartTotalSpan.innerHTML = 'Tổng cộng: 0₫';
+          return;
+        }
+
+        let html = '';
+        let totalPrice = 0;
+        cart.forEach((cartItem, index) => {
+          const itemTotal = cartItem.price * cartItem.quantity;
+          totalPrice += itemTotal;
+          html += `
+            <div class="cart-item">
+              <span><strong>${cartItem.name}</strong> (x${cartItem.quantity})</span>
+              <span style="display:flex; align-items:center; gap:15px;">
+                ${itemTotal.toLocaleString('vi-VN')}₫
+                <button class="remove-btn" data-index="${index}" title="Xoá">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </span>
+            </div>
+          `;
+        });
+        cartItemsDiv.innerHTML = html;
+        cartTotalSpan.innerHTML = `Tổng cộng: ${totalPrice.toLocaleString('vi-VN')}₫`;
+
+        document.querySelectorAll('.remove-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const index = e.currentTarget.getAttribute('data-index');
+            if (index !== null) {
+              const removedItem = cart[parseInt(index)];
+              cart.splice(parseInt(index), 1);
+              updateCartUI();
+              showToast(`Đã xóa ${removedItem.name} khỏi giỏ hàng`);
+            }
           });
-          ticking = true;
+        });
+      }
+
+      // ============ ADD TO CART ============
+      function addToCart(productId) {
+        const product = menuItems.find(p => p.id === productId);
+        if (!product) return;
+        const existing = cart.find(item => item.id === productId);
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push({ id: product.id, name: product.name, price: product.price, quantity: 1 });
+        }
+        updateCartUI();
+        showToast(`Đã thêm ${product.name} vào giỏ hàng`);
+      }
+
+      menuContainer.addEventListener('click', (e) => {
+        const btn = e.target.closest('.add-btn');
+        if (btn) {
+          const id = parseInt(btn.getAttribute('data-id'));
+          addToCart(id);
         }
       });
 
-      card.addEventListener('mouseleave', () => {
-        resetTilt(card);
-      });
-    });
+      // ============ MODAL HANDLING ============
+      const modal = document.getElementById('order-modal');
+      const modalClose = document.getElementById('modal-close');
+      const orderForm = document.getElementById('order-form');
+      const submitBtn = document.getElementById('submit-order-btn');
+      const orderSummary = document.getElementById('order-summary');
+      const orderTotalDisplay = document.getElementById('order-total-display');
 
-    // ============ HERO IMAGE TILT ============
-    const heroImage = document.getElementById('heroImage');
-    let heroTicking = false;
+      function openModal() {
+        if (cart.length === 0) {
+          showToast('Giỏ hàng trống, vui lòng chọn món trước', 'error');
+          return;
+        }
 
-    heroImage.addEventListener('mousemove', (e) => {
-      if (!heroTicking) {
-        requestAnimationFrame(() => {
-          const rect = heroImage.getBoundingClientRect();
-          const x = (e.clientX - rect.left) / rect.width - 0.5;
-          const y = (e.clientY - rect.top) / rect.height - 0.5;
-          heroImage.style.transform = `perspective(1000px) rotateY(${x * 15}deg) rotateX(${-y * 15}deg) translate3d(0, 0, 50px)`;
-          heroTicking = false;
+        // Hiển thị tóm tắt đơn hàng trong modal
+        let summaryHTML = '';
+        let total = 0;
+        cart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          summaryHTML += `
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+              <span>${item.name} x${item.quantity}</span>
+              <span>${itemTotal.toLocaleString('vi-VN')}₫</span>
+            </div>
+          `;
         });
-        heroTicking = true;
+        orderSummary.innerHTML = summaryHTML;
+        orderTotalDisplay.textContent = `${total.toLocaleString('vi-VN')}₫`;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       }
-    });
 
-    heroImage.addEventListener('mouseleave', () => {
-      heroImage.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translate3d(0, 0, 0)';
-      heroImage.style.transition = 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
-    });
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        orderForm.reset();
+      }
 
-    heroImage.addEventListener('mouseenter', () => {
-      heroImage.style.transition = 'transform 0.15s cubic-bezier(0.25, 0.1, 0.25, 1)';
-    });
+      modalClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
 
-    // ============ HERO TEXT PARALLAX ============
-    const heroText = document.getElementById('heroText');
-    let textTicking = false;
+      // ============ GỬI THÔNG TIN CHO ADMIN ============
+      async function sendOrderToAdmin(orderData) {
+        // 1. Gửi qua Webhook (Slack/Discord/Server)
+        if (ADMIN_WEBHOOK_URL && !ADMIN_WEBHOOK_URL.includes('YOUR/SLACK/WEBHOOK')) {
+          try {
+            const payload = {
+              text: `🛎️ *ĐƠN HÀNG MỚI*\n\n` +
+                    `👤 *Khách hàng:* ${orderData.customerName}\n` +
+                    `📞 *SĐT:* ${orderData.phone}\n` +
+                    `📍 *Địa chỉ:* ${orderData.address}\n` +
+                    `📝 *Ghi chú:* ${orderData.note || 'Không có'}\n\n` +
+                    `🧾 *Chi tiết đơn:*\n${orderData.items.map(i => `  • ${i.name} x${i.quantity} - ${(i.price * i.quantity).toLocaleString('vi-VN')}₫`).join('\n')}\n\n` +
+                    `💰 *Tổng cộng:* ${orderData.total.toLocaleString('vi-VN')}₫\n` +
+                    `🕐 *Thời gian:* ${new Date().toLocaleString('vi-VN')}`
+            };
 
-    document.addEventListener('mousemove', (e) => {
-      if (!textTicking) {
-        requestAnimationFrame(() => {
-          const x = (window.innerWidth / 2 - e.clientX) / 80;
-          const y = (window.innerHeight / 2 - e.clientY) / 80;
-          heroText.style.transform = `translate3d(${x}px, ${y}px, 60px) rotateY(${x * 0.5}deg) rotateX(${-y * 0.5}deg)`;
-          textTicking = false;
+            await fetch(ADMIN_WEBHOOK_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            console.log('✅ Đã gửi webhook thành công');
+          } catch (err) {
+            console.warn('⚠️ Gửi webhook thất bại:', err);
+          }
+        }
+
+        // 2. Gửi SMS cho admin (giả lập - cần tích hợp dịch vụ SMS thật)
+        console.log(`
+        ┌─────────────────────────────────────────┐
+        │ 📱 GIẢ LẬP GỬI SMS ĐẾN ADMIN (${ADMIN_PHONE}) │
+        ├─────────────────────────────────────────┤
+        │ ĐƠN HÀNG MỚI TỪ: ${orderData.customerName}
+        │ SĐT KHÁCH: ${orderData.phone}
+        │ ĐỊA CHỈ: ${orderData.address}
+        │ TỔNG TIỀN: ${orderData.total.toLocaleString('vi-VN')}₫
+        │ SỐ MÓN: ${orderData.items.reduce((s,i) => s + i.quantity, 0)}
+        └─────────────────────────────────────────┘
+        `);
+
+        // 3. Lưu vào localStorage để xem lịch sử
+        const orders = JSON.parse(localStorage.getItem('coffee_orders') || '[]');
+        orders.push({
+          ...orderData,
+          timestamp: new Date().toISOString()
         });
-        textTicking = true;
+        localStorage.setItem('coffee_orders', JSON.stringify(orders));
       }
-    });
 
-    // ============ OPTIMIZED PARTICLES ============
-    function createParticles() {
-      const container = document.getElementById('particlesContainer');
-      const fragment = document.createDocumentFragment();
-      const particleCount = 30;
+      // ============ SUBMIT ORDER ============
+      orderForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.animation = `particleDrift ${6 + Math.random() * 8}s ${Math.random() * 5}s infinite linear`;
-        particle.style.width = (1 + Math.random() * 3) + 'px';
-        particle.style.height = particle.style.width;
-        fragment.appendChild(particle);
-      }
-      
-      container.appendChild(fragment);
-    }
-    createParticles();
+        const customerName = document.getElementById('customer-name').value.trim();
+        const phone = document.getElementById('customer-phone').value.trim();
+        const address = document.getElementById('customer-address').value.trim();
+        const note = document.getElementById('order-note').value.trim();
 
-    // ============ MODAL LOGIC ============
-    const openBtn = document.getElementById('openLoginBtn');
-    const closeBtn = document.getElementById('closeModalBtn');
-    const modal = document.getElementById('loginModal');
-    const submitLogin = document.getElementById('submitLogin');
-    const emailInput = document.getElementById('emailInput');
-    const passwordInput = document.getElementById('passwordInput');
+        // Validate
+        if (!customerName || !phone || !address) {
+          showToast('Vui lòng điền đầy đủ thông tin', 'error');
+          return;
+        }
 
-    function openModal() {
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      setTimeout(() => emailInput.focus(), 100);
-    }
+        if (!/^[0-9]{10,11}$/.test(phone)) {
+          showToast('Số điện thoại không hợp lệ (10-11 số)', 'error');
+          return;
+        }
 
-    function closeModal() {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-      emailInput.value = '';
-      passwordInput.value = '';
-    }
+        if (cart.length === 0) {
+          showToast('Giỏ hàng trống!', 'error');
+          return;
+        }
 
-    openBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
+        // Disable nút để tránh double submit
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner"></span> Đang xử lý...';
 
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
+        const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+        const orderData = {
+          customerName,
+          phone,
+          address,
+          note,
+          items: [...cart],
+          total,
+          orderTime: new Date().toLocaleString('vi-VN')
+        };
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeModal();
-      }
-    });
+        // Gửi thông tin cho admin
+        await sendOrderToAdmin(orderData);
 
-    submitLogin.addEventListener('click', () => {
-      const email = emailInput.value.trim();
-      const pass = passwordInput.value.trim();
-      
-      if (email && pass) {
-        submitLogin.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang xử lý...';
-        submitLogin.disabled = true;
-        
+        // Giả lập delay xử lý
         setTimeout(() => {
-          submitLogin.innerHTML = '<i class="fas fa-check"></i> Thành công!';
-          submitLogin.style.background = '#4CAF50';
-          
-          setTimeout(() => {
-            closeModal();
-            submitLogin.innerHTML = '<i class="fas fa-sign-in-alt"></i> Đăng nhập';
-            submitLogin.style.background = 'linear-gradient(135deg, #b8860b, #d4af37)';
-            submitLogin.disabled = false;
-            alert(`🎉 Chào mừng ${email}!\nĐăng nhập thành công vào LUMINA PRO.`);
-          }, 800);
-        }, 600);
-      } else {
-        alert('⚠️ Vui lòng nhập đầy đủ email và mật khẩu.');
-        if (!email) emailInput.focus();
-        else passwordInput.focus();
+          // Thông báo thành công
+          alert(`✅ ĐẶT HÀNG THÀNH CÔNG!\n\n` +
+                `👤 ${customerName}\n` +
+                `📞 ${phone}\n` +
+                `📍 ${address}\n\n` +
+                `🧾 Đơn hàng của bạn:\n` +
+                orderData.items.map(i => `  • ${i.name} x${i.quantity}`).join('\n') +
+                `\n\n💰 Tổng: ${total.toLocaleString('vi-VN')}₫` +
+                `\n\n📱 Admin sẽ liên hệ xác nhận qua số ${phone}` +
+                `\n☕ Cảm ơn bạn đã đặt hàng tại Hương Coffee!`);
+
+          // Reset
+          cart = [];
+          updateCartUI();
+          closeModal();
+          showToast('Đặt hàng thành công! Admin sẽ liên hệ sớm ❤️');
+
+          // Reset button
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Xác nhận đặt hàng';
+        }, 1500);
+      });
+
+      // ============ CHECKOUT BUTTON ============
+      document.getElementById('checkout-btn').addEventListener('click', openModal);
+
+      // ============ CART TOGGLE ============
+      document.getElementById('cart-toggle').addEventListener('click', () => {
+        document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // ============ INIT ============
+      renderMenu();
+      updateCartUI();
+
+      // Kiểm tra xem admin đã cấu hình webhook chưa
+      if (ADMIN_WEBHOOK_URL.includes('YOUR/SLACK/WEBHOOK')) {
+        console.warn('⚠️ Bạn chưa cấu hình ADMIN_WEBHOOK_URL. Đơn hàng sẽ chỉ được lưu trong console và localStorage.');
+        console.log('💡 Để nhận thông báo qua Slack/Discord, hãy thay ADMIN_WEBHOOK_URL bằng webhook thật.');
+        console.log('📋 Đơn hàng được lưu trong localStorage key: coffee_orders');
       }
-    });
-
-    // ============ UTILITY FUNCTIONS ============
-    function scrollToProducts() {
-      document.getElementById('productsSection').scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
-      });
-    }
-
-    document.querySelectorAll('.btn-add').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        const card = this.closest('.product-card');
-        const name = card?.querySelector('h3')?.innerText || 'sản phẩm';
-        const price = card?.querySelector('.price')?.innerText || '';
-        
-        this.style.transform = 'translate3d(0, 0, -10px) scale(0.95)';
-        this.style.transition = 'transform 0.15s cubic-bezier(0.25, 0.1, 0.25, 1)';
-        
-        setTimeout(() => {
-          this.style.transform = 'translate3d(0, 0, 0) scale(1)';
-          this.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-          alert(`🛒 Đã thêm "${name}" - ${price}\n📞 Liên hệ 0988 123 456 để đặt hàng!`);
-        }, 150);
-      });
-    });
-
-    document.querySelectorAll('.contact-item').forEach((item, index) => {
-      item.addEventListener('click', () => {
-        const contacts = [
-          '📞 Gọi ngay: 0988 123 456',
-          '💬 Nhắn tin Zalo: 0988 123 456', 
-          '📧 Email: lumina@pro.vn'
-        ];
-        alert(contacts[index] || 'Liên hệ với chúng tôi để được tư vấn!');
-      });
-    });
-
-    // Service Worker Registration for better performance (nếu cần)
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        // Có thể đăng ký service worker ở đây
-      });
-    }
+    })();
   </script>
 </body>
 </html>
