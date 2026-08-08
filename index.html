@@ -11,286 +11,1012 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
+    <!-- Google Fonts cho chữ đẹp -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
     <style>
-        /* --- ĐỊNH NGHĨA BIẾN MÀU GIAO DIỆN (LIGHT/DARK) --- */
+        /* ============================================================
+               RESET & BIẾN MÀU CAO CẤP - ONE UI 8.5 DYNAMIC
+               ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
-            --bg-color: #f4f6fa;
-            --text-color: #1a1a1a;
-            --text-muted: #5f6368;
-            --text-title: #7a7e85;
-            --card-bg: #ffffff;
-            --card-border: rgba(255, 255, 255, 0.8);
-            --item-bg: #f8f9fa;
-            --header-bg: rgba(244, 246, 250, 0.82);
-            --header-border: rgba(0, 0, 0, 0.04);
-            --tab-container-bg: #e3e5ee;
-            --tab-btn-active: #ffffff;
-            --input-bg: #f2f3f8;
-            --glow-op: 0.45;
-            --glow-1: #8ca5ff;
-            --glow-2: #ffb6c1;
-            --glow-3: #c3a6ff;
-            --insanity-gradient: linear-gradient(135deg, #8ca5ff, #c3a6ff, #ffb6c1);
+            /* LIGHT MODE */
+            --bg-primary: #f0f2f8;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #e8ecf4;
+            --bg-card: rgba(255, 255, 255, 0.75);
+            --bg-input: #f0f3fa;
+            --text-primary: #0c0e14;
+            --text-secondary: #2a2e3a;
+            --text-muted: #7a7f8f;
+            --text-title: #5a5f72;
+            --border-color: rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.08);
+            --accent-blue: #0066ff;
+            --accent-blue-hover: #0052cc;
+            --accent-pink: #ff3b6f;
+            --accent-purple: #7c3aed;
+            --accent-orange: #f97316;
+            --accent-green: #22c55e;
+            --glow-1: rgba(0, 102, 255, 0.15);
+            --glow-2: rgba(255, 59, 111, 0.12);
+            --glow-3: rgba(124, 58, 237, 0.10);
+            --insanity-gradient: linear-gradient(135deg, #0066ff, #7c3aed, #ff3b6f);
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.3);
         }
 
         [data-theme="dark"] {
-            --bg-color: #0a0a0c;
-            --text-color: #f5f5f7;
-            --text-muted: #a1a1a9;
-            --text-title: #8e8e93;
-            --card-bg: #16161a;
-            --card-border: rgba(255, 255, 255, 0.05);
-            --item-bg: #1f1f24;
-            --header-bg: rgba(10, 10, 12, 0.82);
-            --header-border: rgba(255, 255, 255, 0.06);
-            --tab-container-bg: #222227;
-            --tab-btn-active: #2c2c35;
-            --input-bg: #25252b;
-            --glow-op: 0.25;
-            --glow-1: #3b5998;
-            --glow-2: #5c3a41;
-            --glow-3: #4a3475;
-            --insanity-gradient: linear-gradient(135deg, #3b5998, #4a3475, #5c3a41);
+            /* DARK MODE - SIÊU MÀU SẮC */
+            --bg-primary: #06080c;
+            --bg-secondary: #0e121b;
+            --bg-tertiary: #191f2e;
+            --bg-card: rgba(18, 24, 38, 0.85);
+            --bg-input: #141b2b;
+            --text-primary: #f0f2f8;
+            --text-secondary: #c8ccda;
+            --text-muted: #6b728e;
+            --text-title: #8b92a8;
+            --border-color: rgba(255, 255, 255, 0.04);
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6);
+            --accent-blue: #3b82f6;
+            --accent-blue-hover: #60a5fa;
+            --accent-pink: #f472b6;
+            --accent-purple: #a78bfa;
+            --accent-orange: #fb923c;
+            --accent-green: #4ade80;
+            --glow-1: rgba(59, 130, 246, 0.12);
+            --glow-2: rgba(244, 114, 182, 0.08);
+            --glow-3: rgba(167, 139, 250, 0.08);
+            --insanity-gradient: linear-gradient(135deg, #3b82f6, #a78bfa, #f472b6);
+            --glass-bg: rgba(14, 18, 27, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.05);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
-        
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             padding: 16px;
             padding-top: 80px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
+            transition: background 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
             overflow-x: hidden;
+        }
+
+        /* ============================================================
+               AMBIENT GLOW - HIỆU ỨNG ÁNH SÁNG ĐỘNG
+               ============================================================ */
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+            background: var(--bg-primary);
+            transition: background 0.5s ease;
+        }
+
+        .glow-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.5;
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        .glow-1 {
+            top: -15%;
+            left: -10%;
+            width: 450px;
+            height: 450px;
+            background: var(--glow-1);
+            animation: floatGlow 12s ease-in-out infinite alternate;
+        }
+
+        .glow-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: var(--glow-2);
+            animation: floatGlow 14s ease-in-out infinite alternate-reverse;
+        }
+
+        .glow-3 {
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: var(--glow-3);
+            animation: floatGlow 16s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.1); }
+            66% { transform: translate(-20px, 30px) scale(0.9); }
+            100% { transform: translate(10px, -10px) scale(1.05); }
+        }
+
+        /* ============================================================
+               TOP HEADER - ONE UI GLASSMORPHISM
+               ============================================================ */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            background: var(--glass-bg);
+            backdrop-filter: blur(28px) saturate(1.4);
+            -webkit-backdrop-filter: blur(28px) saturate(1.4);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.4s ease;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-brand img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-brand h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+            background: var(--insanity-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-input);
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-icon:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: scale(1.05) rotate(15deg);
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.25);
+        }
+
+        .header-auth-btn {
+            padding: 8px 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 24px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            letter-spacing: 0.2px;
+        }
+
+        .auth-state-signin {
+            background: var(--accent-blue);
+            color: #fff;
+            box-shadow: 0 2px 16px rgba(0, 102, 255, 0.25);
+        }
+
+        .auth-state-signin:hover {
+            background: var(--accent-blue-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 102, 255, 0.35);
+        }
+
+        .auth-state-logged {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .auth-state-logged:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+               ONE UI PILL TABS - SIÊU MƯỢT
+               ============================================================ */
+        .tabs-container {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 24px;
+            width: 100%;
+            max-width: 560px;
+            z-index: 5;
+            background: var(--bg-tertiary);
+            padding: 5px;
+            border-radius: 30px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+            backdrop-filter: blur(8px);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 11px 6px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-align: center;
+            letter-spacing: 0.2px;
             position: relative;
         }
 
-        /* HIGH-END ONE UI 8.5 DYNAMIC AMBIENT BACKGROUND */
-        .ambient-glow {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; pointer-events: none; background: var(--bg-color);
-        }
-        .glow-circle { position: absolute; border-radius: 50%; filter: blur(80px); opacity: var(--glow-op); transition: background 0.5s ease; }
-        .glow-1 { top: -10%; left: -10%; width: 350px; height: 350px; background: var(--glow-1); }
-        .glow-2 { top: 5%; right: -5%; width: 280px; height: 280px; background: var(--glow-2); }
-        .glow-3 { top: -20%; left: 40%; width: 400px; height: 400px; background: var(--glow-3); }
-
-        /* ONE UI TOP HEADER BAR */
-        .top-header {
-            position: fixed; top: 0; left: 0; width: 100%;
-            background: var(--header-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;
-            z-index: 100; border-bottom: 1px solid var(--header-border);
-        }
-        .header-brand { display: flex; align-items: center; gap: 10px; }
-        .top-header img { width: 28px; height: 28px; object-fit: contain; border-radius: 8px; }
-        .top-header h1 { font-size: 1.1rem; font-weight: 600; color: var(--text-color); letter-spacing: -0.3px; }
-        .header-actions { display: flex; align-items: center; gap: 8px; }
-
-        /* BUTTON SETTING STYLE */
-        .btn-setting-toggle {
-            background: var(--input-bg); border: none; width: 32px; height: 32px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-color);
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            border-radius: 4px;
+            transition: width 0.3s ease;
         }
 
-        /* HEADER AUTH BUTTON */
-        .header-auth-btn {
-            padding: 6px 16px; font-size: 0.8rem; font-weight: 600; border-radius: 18px; cursor: pointer; border: none;
+        .tab-btn.active {
+            background: var(--bg-card);
+            color: var(--accent-blue);
+            box-shadow: var(--shadow-sm);
         }
-        .auth-state-signin { background: #0381fe; color: #fff; }
-        .auth-state-signin:hover { background: #0266cb; }
-        .auth-state-logged { background: var(--tab-container-bg); color: var(--text-muted); }
 
-        /* ONE UI PILL TABS MENUS */
-        .tabs-container { 
-            display: flex; gap: 6px; margin-bottom: 16px; width: 100%; max-width: 540px; 
-            z-index: 5; background: var(--tab-container-bg); padding: 4px; border-radius: 24px;
+        .tab-btn.active::after {
+            width: 40%;
         }
-        .tab-btn {
-            flex: 1; padding: 10px 4px; background: transparent; border: none;
-            color: var(--text-muted); font-weight: 600; cursor: pointer; border-radius: 20px; 
-            text-align: center; font-size: 0.85rem;
-        }
-        .tab-btn.active { background: var(--tab-btn-active); color: #0381fe; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-        #tab-btn-admin-panel { display: none; color: #e91e63; }
-        #tab-btn-admin-panel.active { background: var(--tab-btn-active); color: #e91e63; }
 
-        /* MAIN CONTAINER CARD WITH ANIMATION */
-        .container { width: 100%; max-width: 540px; z-index: 5; }
-        
-        /* HIỆU ỨNG BLUR & FADE CHO CÁC TABS CONTENT */
-        .tab-content { 
-            display: none; 
+        .tab-btn:hover:not(.active) {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        #tab-btn-admin-panel {
+            color: var(--accent-pink);
+        }
+
+        #tab-btn-admin-panel.active {
+            background: var(--bg-card);
+            color: var(--accent-pink);
+        }
+
+        /* ============================================================
+               MAIN CONTAINER
+               ============================================================ */
+        .container {
+            width: 100%;
+            max-width: 560px;
+            z-index: 5;
+        }
+
+        /* ============================================================
+               TAB CONTENT - FADE & BLUR HIỆU ỨNG
+               ============================================================ */
+        .tab-content {
+            display: none;
             opacity: 0;
-            transform: translateY(8px);
-            filter: blur(4px);
-            transition: opacity 0.3s cubic-bezier(0.1, 0.9, 0.2, 1), transform 0.3s cubic-bezier(0.1, 0.9, 0.2, 1), filter 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
+            transform: translateY(12px) scale(0.98);
+            filter: blur(6px);
+            transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .tab-content.active { 
-            display: block; 
+
+        .tab-content.active {
+            display: block;
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
             filter: blur(0);
         }
 
-        /* ONE UI CARD FORMAT */
+        /* ============================================================
+               ONE UI CARD - GLASSMORPHISM PREMIUM
+               ============================================================ */
         .oneui-card {
-            background: var(--card-bg); border-radius: 24px; padding: 20px; margin-bottom: 14px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02); border: 1px solid var(--card-border);
+            background: var(--bg-card);
+            backdrop-filter: blur(20px) saturate(1.2);
+            -webkit-backdrop-filter: blur(20px) saturate(1.2);
+            border-radius: 28px;
+            padding: 24px;
+            margin-bottom: 16px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
         }
-        .section-title { font-size: 0.9rem; font-weight: 700; color: var(--text-title); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* ABOUT US REGION */
-        .about-team-box { display: flex; align-items: center; gap: 14px; background: var(--item-bg); border-radius: 18px; padding: 14px; border: 1px solid rgba(0,0,0,0.01); }
-        .about-team-logo { width: 44px; height: 44px; object-fit: contain; border-radius: 12px; background: #000; }
-        .about-team-info h5 { font-size: 0.95rem; font-weight: 600; color: var(--text-color); margin-bottom: 2px; }
-        .about-team-info p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 4px; }
-        
-        /* COUNTER GRID STATISTICS */
-        .counter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
-        .counter-box { background: var(--input-bg); padding: 12px; border-radius: 16px; text-align: center; }
-        .counter-box p { font-size: 0.78rem; font-weight: 700; color: var(--text-title); text-transform: uppercase; margin-bottom: 4px; }
-        .counter-box h4 { font-size: 1.15rem; font-weight: 700; color: var(--text-color); }
-        .pulse-dot { width: 8px; height: 8px; background-color: #2ecc71; border-radius: 50%; display: inline-block; margin-right: 6px; animation: pulse 1.6s infinite; vertical-align: middle; }
-        @keyframes pulse { 0% { transform: scale(0.9); opacity: 0.6; } 50% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(0.9); opacity: 0.6; } }
-
-        /* BLUE DISCORD LINK STYLE */
-        .discord-blue-link { display: inline-flex; align-items: center; color: #0381fe; text-decoration: none; font-size: 0.82rem; font-weight: 600; }
-        .discord-blue-link:hover { opacity: 0.8; text-decoration: underline; }
-
-        /* FORM FIELD DESIGN */
-        .form-group { margin-bottom: 14px; }
-        label { display: block; margin-bottom: 6px; color: var(--text-color); font-weight: 600; font-size: 0.82rem; padding-left: 4px; }
-        input[type="text"], input[type="password"], textarea {
-            width: 100%; padding: 14px; background: var(--input-bg); border: 1px solid transparent;
-            border-radius: 16px; color: var(--text-color); outline: none; font-size: 0.9rem;
+        .oneui-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
         }
-        input:focus, textarea:focus { background: var(--card-bg); border-color: #0381fe; box-shadow: 0 0 0 3px rgba(3,129,254,0.15); }
+
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-title);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        /* ============================================================
+               ABOUT US - TEAM BOX
+               ============================================================ */
+        .about-team-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-input);
+            border-radius: 20px;
+            padding: 16px 18px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .about-team-box:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.06);
+        }
+
+        .about-team-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 14px;
+            background: #0a0a0c;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-team-info h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .about-team-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 4px;
+        }
+
+        .discord-blue-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .discord-blue-link:hover {
+            gap: 8px;
+            opacity: 0.8;
+        }
+
+        /* ============================================================
+               COUNTER GRID - STATS
+               ============================================================ */
+        .counter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .counter-box {
+            background: var(--bg-input);
+            padding: 14px;
+            border-radius: 18px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .counter-box:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .counter-box p {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-title);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 4px;
+        }
+
+        .counter-box h4 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            background: var(--insanity-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+            animation: pulse 1.6s ease-in-out infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.5; }
+            50% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.5; }
+        }
+
+        /* ============================================================
+               FILE ITEM - HIỆU ỨNG ĐẸP
+               ============================================================ */
+        .file-item,
+        .notice-item {
+            background: var(--bg-input);
+            border-radius: 20px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .file-item:hover,
+        .notice-item:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .file-item h4,
+        .notice-item h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .file-desc {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 6px;
+        }
+
+        .file-meta {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* ============================================================
+               BADGE SYSTEM - ĐA DẠNG
+               ============================================================ */
+        .badge-verified {
+            background: rgba(34, 197, 94, 0.12);
+            color: var(--accent-green);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+        }
+
+        .badge-risk {
+            background: rgba(249, 115, 22, 0.12);
+            color: var(--accent-orange);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+        }
+
+        .badge-admin {
+            background: rgba(244, 114, 182, 0.12);
+            color: var(--accent-pink);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+        }
+
+        .badge-hot {
+            background: rgba(249, 115, 22, 0.15);
+            color: var(--accent-orange);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            animation: glowPulse 1.8s ease-in-out infinite;
+        }
+
+        .badge-insanity {
+            background: var(--insanity-gradient);
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            animation: glowPulse 1.4s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0% { opacity: 0.7; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.7; transform: scale(0.98); }
+        }
+
+        /* ============================================================
+               BUTTON ACTIONS
+               ============================================================ */
+        .file-actions-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-view {
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+            padding: 10px 14px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            transition: all 0.25s ease;
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        .btn-view:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 102, 255, 0.25);
+        }
+
+        .btn-view.risk-btn {
+            background: var(--accent-orange);
+            color: #fff;
+        }
+
+        .btn-view.risk-btn:hover {
+            box-shadow: 0 6px 24px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-view.btn-key {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
+
+        .btn-view.btn-key:hover {
+            background: var(--accent-purple);
+            color: #fff;
+            box-shadow: 0 6px 24px rgba(124, 58, 237, 0.25);
+        }
+
+        /* ============================================================
+               FORM ELEMENTS
+               ============================================================ */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.78rem;
+            padding-left: 4px;
+            letter-spacing: 0.3px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--bg-input);
+            border: 2px solid transparent;
+            border-radius: 18px;
+            color: var(--text-primary);
+            outline: none;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            background: var(--bg-card);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.08);
+        }
 
         .btn-submit {
-            width: 100%; padding: 14px; color: white; font-weight: 600; cursor: pointer; font-size: 0.9rem;
-            display: block; text-align: center; border-radius: 18px; border: none;
+            width: 100%;
+            padding: 14px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 18px;
+            transition: all 0.3s ease;
+            background: var(--accent-blue);
+            box-shadow: 0 2px 16px rgba(0, 102, 255, 0.2);
         }
 
-        /* CARD ITEMS LIST (FILES & NOTICES) */
-        .file-item, .notice-item { background: var(--item-bg); border-radius: 20px; padding: 16px; margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px; border: 1px solid rgba(0,0,0,0.01); }
-        .file-item h4, .notice-item h4 { font-size: 1rem; font-weight: 600; color: var(--text-color); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
-        
-        .badge-verified { background: rgba(3,129,254,0.1); color: #0381fe; padding: 3px 8px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; }
-        .badge-risk { background: rgba(255,152,0,0.1); color: #ff9800; padding: 3px 8px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; }
-        .badge-admin { background: rgba(233,30,99,0.1); color: #e91e63; padding: 3px 8px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; }
-        .badge-hot { background: rgba(244,67,54,0.1); color: #f44336; padding: 3px 8px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; animation: blink 1.2s infinite; }
-        .badge-insanity { background: var(--insanity-gradient); color: #fff; padding: 3px 8px; border-radius: 8px; font-size: 0.7rem; font-weight: 800; text-shadow: 0 1px 2px rgba(0,0,0,0.2); animation: blink 1.2s infinite; }
-        
-        @keyframes blink { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
-
-        .file-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.45; }
-        .file-meta { font-size: 0.75rem; color: #9aa0a6; font-weight: 500; }
-
-        .file-actions-row { display: flex; gap: 8px; margin-top: 4px; }
-        .btn-view {
-            flex: 1; text-align: center; padding: 10px; border-radius: 14px; font-weight: 600; 
-            cursor: pointer; text-decoration: none; font-size: 0.85rem; display: block;
-            background: #e8f0fe; color: #1a73e8; border: none;
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 102, 255, 0.3);
         }
-        .btn-view:hover { background: #1a73e8; color: #fff; }
-        .btn-view.risk-btn { background: #fff3e0; color: #e65100; }
-        .btn-view.risk-btn:hover { background: #e65100; color: #fff; }
-        .btn-key { background: var(--tab-container-bg); color: var(--text-muted); }
-        .btn-key:hover { background: var(--input-bg); color: var(--text-color); }
 
-        /* ONE UI DIALOG MODAL SQUARES WITH BLUR & FADE ANIMATION */
+        .btn-submit.danger {
+            background: var(--accent-pink);
+        }
+
+        .btn-submit.danger:hover {
+            box-shadow: 0 8px 32px rgba(255, 59, 111, 0.3);
+        }
+
+        /* ============================================================
+               MODAL - ONE UI BOTTOM SHEET
+               ============================================================ */
         .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4);
-            z-index: 9999; display: flex; justify-content: center; align-items: flex-end;
-            opacity: 0; pointer-events: none; backdrop-filter: blur(0px);
-            transition: opacity 0.28s ease, backdrop-filter 0.28s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            opacity: 0;
+            pointer-events: none;
+            backdrop-filter: blur(0px);
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .modal-overlay.active { opacity: 1; pointer-events: auto; backdrop-filter: blur(6px); }
 
-        .modal-box { 
-            padding: 24px; max-width: 540px; width: 100%; position: relative; 
-            background: var(--card-bg); border-radius: 28px 28px 0 0;
-            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
-            transform: translateY(100%); 
-            transition: transform 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+            backdrop-filter: blur(12px);
         }
-        .modal-overlay.active .modal-box { transform: translateY(0); }
-        
-        .modal-close-btn { 
-            position: absolute; top: 16px; right: 20px; background: var(--input-bg); border: none; 
-            color: var(--text-muted); font-weight: bold; cursor: pointer; font-size: 1.1rem;
-            width: 32px; height: 32px; border-radius: 50%; text-align: center; line-height: 32px;
+
+        .modal-box {
+            padding: 28px 24px 32px;
+            max-width: 540px;
+            width: 100%;
+            position: relative;
+            background: var(--bg-card);
+            backdrop-filter: blur(28px) saturate(1.4);
+            border-radius: 32px 32px 0 0;
+            border: 1px solid var(--glass-border);
+            border-bottom: none;
+            box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.08);
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            max-height: 90vh;
+            overflow-y: auto;
         }
-        .auth-links a { color: #0381fe; font-weight: 600; text-decoration: none; margin: 0 6px; cursor: pointer;}
 
-        /* ONE UI SETTINGS SWITCH SYSTEM */
-        .setting-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 4px; border-bottom: 1px solid var(--header-border); }
-        .setting-info h5 { font-size: 0.95rem; font-weight: 600; color: var(--text-color); }
-        .setting-info p { font-size: 0.78rem; color: var(--text-muted); }
-        
-        .switch { position: relative; display: inline-block; width: 46px; height: 26px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #bdc3c7; transition: .3s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
-        input:checked + .slider { background-color: #0381fe; }
-        input:checked + .slider:before { transform: translateX(20px); }
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
 
-        /* ONE UI LOADER SQUIRCLE */
+        .modal-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: var(--bg-input);
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: var(--accent-pink);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        /* ============================================================
+               AUTH LINKS
+               ============================================================ */
+        .auth-links a {
+            color: var(--accent-blue);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .auth-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* ============================================================
+               SETTINGS - SWITCH
+               ============================================================ */
+        .setting-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 4px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .setting-info h5 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .setting-info p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #bdc3c7;
+            transition: 0.3s ease;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background: white;
+            transition: 0.3s ease;
+            border-radius: 50%;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        input:checked+.slider {
+            background: var(--accent-blue);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        /* ============================================================
+               INFO ROW
+               ============================================================ */
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 4px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.85rem;
+        }
+
+        .info-row span {
+            color: var(--text-muted);
+        }
+
+        .info-row strong {
+            color: var(--text-primary);
+        }
+
+        /* ============================================================
+               LOADER
+               ============================================================ */
         #loading-frame {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(244, 246, 250, 0.9);
-            z-index: 10000; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
-        body[data-theme="dark"] #loading-frame { background: rgba(10, 10, 12, 0.9); }
-        #loading-frame.active { opacity: 1; pointer-events: auto; }
-        .spinner { width: 36px; height: 36px; border: 3.5px solid var(--tab-container-bg); border-left-color: #0381fe; border-radius: 50%; animation: spin 0.8s infinite linear; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        .info-row { display: flex; justify-content: space-between; padding: 12px 4px; border-bottom: 1px solid var(--header-border); font-size: 0.9rem; }
-        .info-row span { color: var(--text-muted); }
-        .info-row strong { color: var(--text-color); font-weight: 600; }
+        #loading-frame.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3.5px solid var(--bg-tertiary);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 0.8s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ============================================================
+               RESPONSIVE
+               ============================================================ */
+        @media (max-width: 480px) {
+            body { padding: 12px; padding-top: 72px; }
+            .top-header { padding: 10px 16px; }
+            .header-brand h1 { font-size: 0.95rem; }
+            .oneui-card { padding: 18px; }
+            .modal-box { padding: 20px 16px 24px; }
+            .tabs-container { border-radius: 20px; padding: 4px; }
+            .tab-btn { font-size: 0.7rem; padding: 8px 4px; }
+            .counter-box h4 { font-size: 1.1rem; }
+            .file-item h4 { font-size: 0.85rem; }
+        }
+
+        /* Scrollbar tùy chỉnh */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 10px; }
     </style>
 </head>
 <body>
 
+    <!-- ===== AMBIENT GLOW ===== -->
     <div class="ambient-glow">
         <div class="glow-circle glow-1"></div>
         <div class="glow-circle glow-2"></div>
         <div class="glow-circle glow-3"></div>
     </div>
 
-    <div class="top-header">
+    <!-- ===== TOP HEADER ===== -->
+    <header class="top-header">
         <div class="header-brand">
             <img src="https://raw.githubusercontent.com/TheFish-cyber/Netking-Share/refs/heads/main/ic_launcher_meow.png" alt="Logo">
-            <h1>Hoanq Danh </h1>
+            <h1>Hoanq Danh</h1>
         </div>
         <div class="header-actions">
-            <button class="btn-setting-toggle" onclick="openSettingsModal()" title="Cài đặt giao diện">
-                ⚙️
-            </button>
+            <button class="btn-icon" onclick="openSettingsModal()" title="Cài đặt">⚙️</button>
             <button id="header-auth-action" class="header-auth-btn auth-state-signin" onclick="handleHeaderAuthClick()">
                 Đăng nhập
             </button>
         </div>
-    </div>
+    </header>
 
+    <!-- ===== LOADER ===== -->
     <div id="loading-frame">
         <div class="spinner"></div>
-        <div style="margin-top: 14px; color: #0381fe; font-weight: 600; font-size: 0.85rem;">Đang tải...</div>
+        <div style="margin-top: 16px; color: var(--accent-blue); font-weight: 600; font-size: 0.85rem;">Đang tải...</div>
     </div>
 
+    <!-- ===== SETTINGS MODAL ===== -->
     <div id="settings-modal" class="modal-overlay">
         <div class="modal-box">
-            <button onclick="closeSettingsModal()" class="modal-close-btn">×</button>
-            <h3 style="margin-bottom: 18px; font-size: 1.1rem; font-weight:600;">Cài đặt bảng điều khiển</h3>
-            
+            <button onclick="closeSettingsModal()" class="modal-close-btn">✕</button>
+            <h3 style="margin-bottom: 20px; font-size: 1.15rem; font-weight:700;">Cài đặt giao diện</h3>
+
             <div class="setting-row">
                 <div class="setting-info">
-                    <h5>Chế độ tối (Dark Mode)</h5>
-                    <p>Bảo vệ mắt, tối ưu năng lượng thiết bị</p>
+                    <h5>Chế độ tối</h5>
+                    <p>Bảo vệ mắt, tối ưu năng lượng</p>
                 </div>
                 <label class="switch">
                     <input type="checkbox" id="theme-switch" onchange="toggleThemeMode(this)">
@@ -300,167 +1026,194 @@
 
             <div class="setting-row" style="border:none;">
                 <div class="setting-info">
-                    <h5>Hiệu ứng chuyển cảnh nâng cao</h5>
-                    <p>Bật hiệu ứng Blur và Fade In/Out mượt mà</p>
+                    <h5>Hiệu ứng chuyển cảnh</h5>
+                    <p>Blur & Fade In/Out mượt mà</p>
                 </div>
                 <label class="switch">
                     <input type="checkbox" id="animation-switch" checked disabled>
                     <span class="slider"></span>
                 </label>
             </div>
-            <p style="text-align: center; font-size:0.75rem; color:var(--text-muted); margin-top:16px;">Netking UI v8.5 Engine • Active</p>
+            <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:16px;">Netking UI v8.5 • Premium</p>
         </div>
     </div>
 
+    <!-- ===== STATUS MODAL ===== -->
     <div id="status-modal" class="modal-overlay">
-        <div class="modal-box" style="text-align: center; border-radius: 24px; margin: 16px; margin-top: auto;">
-            <h3 id="status-title" style="font-size: 1.15rem; margin-bottom: 6px; font-weight: 600;">Thông báo</h3>
-            <p id="status-desc" style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px;">Thao tác thành công.</p>
-            <button class="btn-submit" onclick="closeStatusModal()" style="background: #0381fe;">Xác nhận</button>
+        <div class="modal-box" style="text-align:center; border-radius:28px; margin:16px; margin-top:auto;">
+            <h3 id="status-title" style="font-size:1.15rem; font-weight:700; margin-bottom:6px;">Thông báo</h3>
+            <p id="status-desc" style="color:var(--text-secondary); font-size:0.88rem; line-height:1.6; margin-bottom:20px;">Thao tác thành công.</p>
+            <button class="btn-submit" onclick="closeStatusModal()" style="background:var(--accent-blue);">Xác nhận</button>
         </div>
     </div>
 
+    <!-- ===== WELCOME MODAL ===== -->
     <div id="welcome-modal" class="modal-overlay">
         <div class="modal-box">
-            <button id="close-welcome-btn" class="modal-close-btn" disabled style="font-size:0.75rem; width:auto; padding:0 12px; border-radius:14px;">3s</button>
-            <div style="text-align: center; margin-bottom: 12px; margin-top: 10px;">
-                <img src="https://raw.githubusercontent.com/TheFish-cyber/Netking-Share/refs/heads/main/ic_launcher_meow.png" alt="Logo" style="width: 56px; height: 56px; object-fit: contain; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <button id="close-welcome-btn" class="modal-close-btn" disabled style="font-size:0.7rem; width:auto; padding:0 14px; border-radius:12px;">3s</button>
+            <div style="text-align:center; margin-bottom:12px; margin-top:8px;">
+                <img src="https://raw.githubusercontent.com/TheFish-cyber/Netking-Share/refs/heads/main/ic_launcher_meow.png" alt="Logo" style="width:64px; height:64px; object-fit:contain; border-radius:16px; box-shadow:var(--shadow-md);">
             </div>
-            <h2 style="margin-bottom: 8px; font-size: 1.25rem; font-weight:600; text-align: center; color:var(--text-color);">Chào mừng đến với HDanh File</h2>
-            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 22px; text-align: center; padding: 0 10px;">
-                Hệ thống đám mây lưu trữ dữ liệu chính thức của Netking Team. Vui lòng đăng nhập tài khoản hệ thống của ông để tiếp tục.
+            <h2 style="margin-bottom:8px; font-size:1.3rem; font-weight:700; text-align:center; background:var(--insanity-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">HDanh File</h2>
+            <p style="color:var(--text-secondary); font-size:0.88rem; line-height:1.6; margin-bottom:20px; text-align:center;">
+                Hệ thống lưu trữ đám mây chính thức của Netking Team.<br>
+                Vui lòng đăng nhập để tiếp tục.
             </p>
-            <div class="auth-links" style="border-top: 1px solid var(--header-border); padding-top: 16px; text-align: center; padding-bottom: 10px;">
-                <a onclick="openAuthModal('signin')">Đăng ký</a> <span style="color: #d1d1d6;">|</span> <a onclick="openAuthModal('login')">Đăng nhập</a>
+            <div class="auth-links" style="border-top:1px solid var(--border-color); padding-top:16px; text-align:center;">
+                <a onclick="openAuthModal('signin')">Đăng ký</a>
+                <span style="color:var(--text-muted);">|</span>
+                <a onclick="openAuthModal('login')">Đăng nhập</a>
             </div>
         </div>
     </div>
 
+    <!-- ===== AUTH MODAL ===== -->
     <div id="auth-modal" class="modal-overlay">
         <div class="modal-box">
-            <button onclick="closeAuthModal()" class="modal-close-btn">×</button>
-            
-            <div id="login-form-wrapper" style="display: block;">
-                <h3 style="margin-bottom: 18px; font-size: 1.1rem; font-weight:600;">Đăng nhập hệ thống</h3>
-                <div class="form-group"><label>TÀI KHOẢN</label><input type="text" id="login-user" placeholder="Nhập tên tài khoản..."></div>
-                <div class="form-group"><label>MẬT KHẨU</label><input type="password" id="login-pass" placeholder="Nhập mật khẩu..."></div>
-                <button class="btn-submit" style="background: #0381fe; margin-top: 8px;" onclick="handleAuth('login')">Đăng nhập</button>
-                <p style="margin-top: 16px; text-align:center; font-size: 0.85rem; color:var(--text-muted);">Chưa có tài khoản? <a onclick="toggleAuthForm('signin')">Tạo tài khoản</a></p>
+            <button onclick="closeAuthModal()" class="modal-close-btn">✕</button>
+
+            <div id="login-form-wrapper" style="display:block;">
+                <h3 style="margin-bottom:18px; font-size:1.1rem; font-weight:700;">Đăng nhập</h3>
+                <div class="form-group">
+                    <label>TÀI KHOẢN</label>
+                    <input type="text" id="login-user" placeholder="Nhập tên tài khoản...">
+                </div>
+                <div class="form-group">
+                    <label>MẬT KHẨU</label>
+                    <input type="password" id="login-pass" placeholder="Nhập mật khẩu...">
+                </div>
+                <button class="btn-submit" style="background:var(--accent-blue); margin-top:4px;" onclick="handleAuth('login')">Đăng nhập</button>
+                <p style="margin-top:16px; text-align:center; font-size:0.82rem; color:var(--text-muted);">
+                    Chưa có tài khoản? <a onclick="toggleAuthForm('signin')" style="color:var(--accent-blue); font-weight:600; cursor:pointer;">Tạo tài khoản</a>
+                </p>
             </div>
 
-            <div id="signin-form-wrapper" style="display: none;">
-                <h3 style="margin-bottom: 18px; font-size: 1.1rem; font-weight:600;">Đăng ký tài khoản</h3>
-                <div class="form-group"><label>TÊN TÀI KHOẢN</label><input type="text" id="reg-user" placeholder="Tối đa 10 kí tự"></div>
-                <div class="form-group"><label>MẬT KHẨU BẢO MẬT</label><input type="password" id="reg-pass" placeholder="Tối đa 20 kí tự"></div>
-                <button class="btn-submit" style="background: #000; color: #fff; margin-top: 8px;" onclick="handleAuth('register')">Đăng ký ngay</button>
-                <p style="margin-top: 16px; text-align:center; font-size: 0.85rem; color:var(--text-muted);">Đã có tài khoản? <a onclick="toggleAuthForm('login')">Đăng nhập</a></p>
+            <div id="signin-form-wrapper" style="display:none;">
+                <h3 style="margin-bottom:18px; font-size:1.1rem; font-weight:700;">Đăng ký</h3>
+                <div class="form-group">
+                    <label>TÊN TÀI KHOẢN</label>
+                    <input type="text" id="reg-user" placeholder="Tối đa 10 kí tự">
+                </div>
+                <div class="form-group">
+                    <label>MẬT KHẨU</label>
+                    <input type="password" id="reg-pass" placeholder="Tối đa 20 kí tự">
+                </div>
+                <button class="btn-submit" style="background:var(--accent-purple); margin-top:4px;" onclick="handleAuth('register')">Đăng ký ngay</button>
+                <p style="margin-top:16px; text-align:center; font-size:0.82rem; color:var(--text-muted);">
+                    Đã có tài khoản? <a onclick="toggleAuthForm('login')" style="color:var(--accent-blue); font-weight:600; cursor:pointer;">Đăng nhập</a>
+                </p>
             </div>
         </div>
     </div>
 
+    <!-- ===== ACCOUNT INFO MODAL ===== -->
     <div id="account-info-modal" class="modal-overlay">
         <div class="modal-box">
-            <button onclick="closeAccountInfoModal()" class="modal-close-btn">×</button>
-            <h3 style="margin-bottom: 18px; font-size: 1.1rem; font-weight:600; text-align: center;">Thông tin tài khoản</h3>
-            
-            <div style="margin-bottom: 24px; background: var(--input-bg); padding: 6px 14px; border-radius: 18px;">
+            <button onclick="closeAccountInfoModal()" class="modal-close-btn">✕</button>
+            <h3 style="margin-bottom:18px; font-size:1.1rem; font-weight:700; text-align:center;">Thông tin tài khoản</h3>
+
+            <div style="margin-bottom:24px; background:var(--bg-input); padding:6px 16px; border-radius:20px;">
                 <div class="info-row"><span>Tài khoản:</span><strong id="info-display-username">N/A</strong></div>
                 <div class="info-row"><span>Mật khẩu:</span><strong id="info-display-password">••••••••</strong></div>
-                <div class="info-row" style="border:none;"><span>Cấp bậc:</span><strong id="info-display-rank" style="color: #0381fe;">MEMBER</strong></div>
+                <div class="info-row" style="border:none;"><span>Cấp bậc:</span><strong id="info-display-rank" style="color:var(--accent-blue);">MEMBER</strong></div>
             </div>
-            <button class="btn-submit" style="background: #fdadb2; color: #d32f2f;" onclick="processLogout()">Đăng xuất tài khoản</button>
+            <button class="btn-submit danger" onclick="processLogout()">Đăng xuất</button>
         </div>
     </div>
 
+    <!-- ===== TABS ===== -->
     <div class="tabs-container">
-        <button class="tab-btn active" onclick="switchTab('tab-files')">Tệp tin</button>
-        <button class="tab-btn" onclick="switchTab('tab-verified')">Đã xác minh</button>
-        <button class="tab-btn" onclick="switchTab('tab-announcements')">Thông báo</button>
-        <button class="tab-btn" id="tab-btn-admin-panel" onclick="switchTab('tab-admin-panel')">Quản trị</button>
+        <button class="tab-btn active" onclick="switchTab('tab-files')">📁 Tệp tin</button>
+        <button class="tab-btn" onclick="switchTab('tab-verified')">✅ Xác minh</button>
+        <button class="tab-btn" onclick="switchTab('tab-announcements')">📢 Thông báo</button>
+        <button class="tab-btn" id="tab-btn-admin-panel" onclick="switchTab('tab-admin-panel')">⚙️ Quản trị</button>
     </div>
 
+    <!-- ===== CONTAINER ===== -->
     <div class="container">
-        
-        <div class="oneui-card" style="margin-bottom: 14px;">
-            <p class="section-title">About Us</p>
+
+        <!-- ===== ABOUT CARD ===== -->
+        <div class="oneui-card">
+            <div class="section-title">🌟 Giới thiệu</div>
             <div class="about-team-box">
-                <img src="https://raw.githubusercontent.com/TheFish-cyber/Netking-Share/refs/heads/main/ic_launcher_meow.png" alt="NetKing Logo" class="about-team-logo">
+                <img src="https://raw.githubusercontent.com/TheFish-cyber/Netking-Share/refs/heads/main/ic_launcher_meow.png" alt="Logo" class="about-team-logo">
                 <div class="about-team-info">
                     <h5>Team NetKing Official</h5>
-                    <p>Hệ thống cung cấp, crack và phân phối các tệp tin ứng dụng di động an toàn, tối ưu hóa trải nghiệm người dùng cao cấp.</p>
-                    <a href="https://discord.gg/wf4QnepsxS" target="_blank" class="discord-blue-link">➔ Tham gia Discord của nhóm</a>
+                    <p>Hệ thống cung cấp, crack và phân phối ứng dụng di động an toàn, tối ưu trải nghiệm người dùng.</p>
+                    <a href="https://discord.gg/wf4QnepsxS" target="_blank" class="discord-blue-link">➔ Tham gia Discord</a>
                 </div>
             </div>
-            
+
             <div class="counter-grid">
                 <div class="counter-box">
-                    <p>Lượt truy cập</p>
+                    <p>👁️ Lượt truy cập</p>
                     <h4 id="totalVisits">0</h4>
                 </div>
                 <div class="counter-box">
-                    <p><span class="pulse-dot"></span>Trực tuyến</p>
+                    <p><span class="pulse-dot"></span> Trực tuyến</p>
                     <h4 id="activeUsers">0</h4>
                 </div>
             </div>
         </div>
 
+        <!-- ===== TAB: FILES ===== -->
         <div id="tab-files" class="tab-content active">
             <div class="oneui-card">
-                <p class="section-title">Danh sách hoạt động (6 Tệp)</p>
+                <div class="section-title">📂 Danh sách tệp (6)</div>
                 <div id="files-container">
-                    
+
                     <div class="file-item">
-                        <h4>Netking Launcher <span style="display: flex; gap: 4px;"><span class="badge-insanity">INSANITY!!</span><span class="badge-hot">HOT 🔥</span><span class="badge-verified">An toàn</span></span></h4>
-                        <p class="file-desc">Finding good launcher apk? NL will give you best enjoy. Hide your apps from others people to find it, NL can help you!<br><span style="color: #0381fe; font-weight: 500;">✓ Verified by netking team and fishisred</span></p>
+                        <h4>Netking Launcher <span style="display:flex;gap:4px;flex-wrap:wrap;"><span class="badge-insanity">INSANITY</span><span class="badge-hot">HOT</span><span class="badge-verified">An toàn</span></span></h4>
+                        <p class="file-desc">Launcher APK tốt nhất. Ẩn ứng dụng khỏi người khác.<br><span style="color:var(--accent-blue);font-weight:500;">✓ Verified by Netking Team</span></p>
                         <div class="file-meta">Phiên bản: V1</div>
                         <div class="file-actions-row">
-                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/zmd786crhxyv6no/NLauncher_1.0.apk/file', false)" class="btn-view">Tải tập tin</button>
+                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/zmd786crhxyv6no/NLauncher_1.0.apk/file', false)" class="btn-view">Tải xuống</button>
                         </div>
                     </div>
-                    
+
                     <div class="file-item">
-                        <h4>NetPlus <span style="display: flex; gap: 4px;"><span class="badge-hot">HOT 🔥</span><span class="badge-verified">An toàn</span></span></h4>
-                        <p class="file-desc">2 option antiband 88% - 90%:<br>1. Freeze<br>2. Ghost<br><span style="color: #0381fe; font-weight: 500;">✓ This app got verified by shin mod, davisk tech and netking team</span></p>
+                        <h4>NetPlus <span style="display:flex;gap:4px;flex-wrap:wrap;"><span class="badge-hot">HOT</span><span class="badge-verified">An toàn</span></span></h4>
+                        <p class="file-desc">2 tùy chọn chống band 88-90%: Freeze • Ghost<br><span style="color:var(--accent-blue);font-weight:500;">✓ Verified by shin mod & davisk</span></p>
                         <div class="file-meta">Phiên bản: V18</div>
                         <div class="file-actions-row">
-                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/c5rjolz3ezd8yun/NetPlusV18.apk/file?dkey=hl9pz305lxt&r=1774', false)" class="btn-view">Tải tập tin</button>
+                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/c5rjolz3ezd8yun/NetPlusV18.apk/file?dkey=hl9pz305lxt&r=1774', false)" class="btn-view">Tải xuống</button>
                             <button onclick="window.open('https://link4m.net/go/eb8Na3', '_blank')" class="btn-view btn-key">Lấy Key</button>
                         </div>
                     </div>
 
                     <div class="file-item">
                         <h4>Netking Fake Lag <span class="badge-verified">An toàn</span></h4>
-                        <p class="file-desc">Fake Lag Modern, 3 Options:<br>1. Freeze Infinity<br>2. Invisible<br>3. Teleporter</p>
+                        <p class="file-desc">Fake Lag Modern: Freeze Infinity • Invisible • Teleporter</p>
                         <div class="file-meta">Phiên bản: v1.0.1</div>
                         <div class="file-actions-row">
-                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/b566kfjwhsewl98/Netking_%25281%2529.apk/file', false)" class="btn-view">Tải tập tin</button>
+                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/b566kfjwhsewl98/Netking_%25281%2529.apk/file', false)" class="btn-view">Tải xuống</button>
                         </div>
                     </div>
 
                     <div class="file-item">
-                        <h4>Netking Fake Lag OG Version <span class="badge-verified">An toàn</span></h4>
-                        <p class="file-desc">Using OG VPN Service, Never getting BlackListed But Just Own 1 Options:<br>Freeze The Game For 2s Have About 1.5s To Shoot</p>
+                        <h4>Netking Fake Lag OG <span class="badge-verified">An toàn</span></h4>
+                        <p class="file-desc">OG VPN Service: Freeze game 2s • 1.5s để bắn</p>
                         <div class="file-meta">Phiên bản: v1.0.2</div>
                         <div class="file-actions-row">
-                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/k37z83abw7ckrzo/Netking.apk/file', false)" class="btn-view">Tải tập tin</button>
+                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/k37z83abw7ckrzo/Netking.apk/file', false)" class="btn-view">Tải xuống</button>
                         </div>
                     </div>
 
                     <div class="file-item">
                         <h4>Netking Modern <span class="badge-risk">Chưa xác minh</span></h4>
-                        <p class="file-desc" style="color: #e65100;">This app got cracked by Netking team, not made by Netking team. Can be risk!</p>
+                        <p class="file-desc" style="color:var(--accent-orange);">Crack bởi Netking team, không phải bản gốc. Có thể rủi ro!</p>
                         <div class="file-meta">Phiên bản: V2.0.0</div>
                         <div class="file-actions-row">
-                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/e72t7fqxcis9hp0/Netking+Modern.apk/file', true)" class="btn-view risk-btn">Tải tập tin rủi ro</button>
+                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/e72t7fqxcis9hp0/Netking+Modern.apk/file', true)" class="btn-view risk-btn">Tải rủi ro</button>
                         </div>
                     </div>
 
                     <div class="file-item">
                         <h4>Sky Ping <span class="badge-verified">An toàn</span></h4>
-                        <p class="file-desc">Safe App, made by tunmod the frames and UIs look very cool and all free<br>The key for the app is... join our server discord for key &lt;3</p>
+                        <p class="file-desc">App an toàn, giao diện đẹp, hoàn toàn miễn phí.<br>Key: join Discord của nhóm ❤️</p>
                         <div class="file-meta">Phiên bản: V4</div>
                         <div class="file-actions-row">
-                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/2ddgnsos7d2ee7d/SKY_PING_VIPV4.apk/file', false)" class="btn-view">Tải tập tin</button>
+                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/2ddgnsos7d2ee7d/SKY_PING_VIPV4.apk/file', false)" class="btn-view">Tải xuống</button>
                         </div>
                     </div>
 
@@ -468,54 +1221,55 @@
             </div>
         </div>
 
+        <!-- ===== TAB: VERIFIED ===== -->
         <div id="tab-verified" class="tab-content">
             <div class="oneui-card">
-                <p class="section-title">✓ Chỉ hiện tệp tin an toàn</p>
+                <div class="section-title">✅ Tệp đã xác minh</div>
                 <div id="verified-container">
-                    
+
                     <div class="file-item">
-                        <h4>Netking Launcher <span style="display: flex; gap: 4px;"><span class="badge-insanity">INSANITY!!</span><span class="badge-hot">HOT 🔥</span><span class="badge-verified">An toàn</span></span></h4>
-                        <p class="file-desc">Finding good launcher apk? NL will give you best enjoy. Hide your apps from others people to find it, NL can help you!<br><span style="color: #0381fe; font-weight: 500;">✓ Verified by netking team and fishisred</span></p>
+                        <h4>Netking Launcher <span style="display:flex;gap:4px;flex-wrap:wrap;"><span class="badge-insanity">INSANITY</span><span class="badge-hot">HOT</span><span class="badge-verified">An toàn</span></span></h4>
+                        <p class="file-desc">Launcher APK tốt nhất. Ẩn ứng dụng khỏi người khác.<br><span style="color:var(--accent-blue);font-weight:500;">✓ Verified by Netking Team</span></p>
                         <div class="file-meta">Phiên bản: V1</div>
                         <div class="file-actions-row">
-                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/zmd786crhxyv6no/NLauncher_1.0.apk/file', false)" class="btn-view">Tải tập tin</button>
+                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/zmd786crhxyv6no/NLauncher_1.0.apk/file', false)" class="btn-view">Tải xuống</button>
                         </div>
                     </div>
-                    
+
                     <div class="file-item">
-                        <h4>NetPlus <span style="display: flex; gap: 4px;"><span class="badge-hot">HOT 🔥</span><span class="badge-verified">An toàn</span></span></h4>
-                        <p class="file-desc">2 option antiband 88% - 90%:<br>1. Freeze<br>2. Ghost<br><span style="color: #0381fe; font-weight: 500;">✓ This app got verified by shin mod, davisk tech and netking team</span></p>
+                        <h4>NetPlus <span style="display:flex;gap:4px;flex-wrap:wrap;"><span class="badge-hot">HOT</span><span class="badge-verified">An toàn</span></span></h4>
+                        <p class="file-desc">2 tùy chọn chống band 88-90%: Freeze • Ghost<br><span style="color:var(--accent-blue);font-weight:500;">✓ Verified by shin mod & davisk</span></p>
                         <div class="file-meta">Phiên bản: V18</div>
                         <div class="file-actions-row">
-                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/c5rjolz3ezd8yun/NetPlusV18.apk/file?dkey=hl9pz305lxt&r=1774', false)" class="btn-view">Tải tập tin</button>
+                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/c5rjolz3ezd8yun/NetPlusV18.apk/file?dkey=hl9pz305lxt&r=1774', false)" class="btn-view">Tải xuống</button>
                             <button onclick="window.open('https://link4m.net/go/eb8Na3', '_blank')" class="btn-view btn-key">Lấy Key</button>
                         </div>
                     </div>
 
                     <div class="file-item">
                         <h4>Netking Fake Lag <span class="badge-verified">An toàn</span></h4>
-                        <p class="file-desc">Fake Lag Modern, 3 Options:<br>1. Freeze Infinity<br>2. Invisible<br>3. Teleporter</p>
+                        <p class="file-desc">Fake Lag Modern: Freeze Infinity • Invisible • Teleporter</p>
                         <div class="file-meta">Phiên bản: v1.0.1</div>
                         <div class="file-actions-row">
-                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/b566kfjwhsewl98/Netking_%25281%2529.apk/file', false)" class="btn-view">Tải tập tin</button>
+                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/b566kfjwhsewl98/Netking_%25281%2529.apk/file', false)" class="btn-view">Tải xuống</button>
                         </div>
                     </div>
 
                     <div class="file-item">
-                        <h4>Netking Fake Lag OG Version <span class="badge-verified">An toàn</span></h4>
-                        <p class="file-desc">Using OG VPN Service, Never getting BlackListed But Just Own 1 Options:<br>Freeze The Game For 2s Have About 1.5s To Shoot</p>
+                        <h4>Netking Fake Lag OG <span class="badge-verified">An toàn</span></h4>
+                        <p class="file-desc">OG VPN Service: Freeze game 2s • 1.5s để bắn</p>
                         <div class="file-meta">Phiên bản: v1.0.2</div>
                         <div class="file-actions-row">
-                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/k37z83abw7ckrzo/Netking.apk/file', false)" class="btn-view">Tải tập tin</button>
+                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/k37z83abw7ckrzo/Netking.apk/file', false)" class="btn-view">Tải xuống</button>
                         </div>
                     </div>
 
                     <div class="file-item">
                         <h4>Sky Ping <span class="badge-verified">An toàn</span></h4>
-                        <p class="file-desc">Safe App, made by tunmod the frames and UIs look very cool and all free<br>The key for the app is... join our server discord for key &lt;3</p>
+                        <p class="file-desc">App an toàn, giao diện đẹp, hoàn toàn miễn phí.<br>Key: join Discord của nhóm ❤️</p>
                         <div class="file-meta">Phiên bản: V4</div>
                         <div class="file-actions-row">
-                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/2ddgnsos7d2ee7d/SKY_PING_VIPV4.apk/file', false)" class="btn-view">Tải tập tin</button>
+                            <button onclick="downloadFileProtect('https://www.mediafire.com/file/2ddgnsos7d2ee7d/SKY_PING_VIPV4.apk/file', false)" class="btn-view">Tải xuống</button>
                         </div>
                     </div>
 
@@ -523,32 +1277,41 @@
             </div>
         </div>
 
+        <!-- ===== TAB: ANNOUNCEMENTS ===== -->
         <div id="tab-announcements" class="tab-content">
             <div class="oneui-card">
-                <p class="section-title">📢 Bảng tin hệ thống</p>
-                <div id="announcements-container"></div>
+                <div class="section-title">📢 Bảng tin hệ thống</div>
+                <div id="announcements-container">
+                    <p style="color:var(--text-muted); font-size:0.85rem; padding:10px; text-align:center;">Đang tải thông báo...</p>
+                </div>
             </div>
         </div>
 
+        <!-- ===== TAB: ADMIN PANEL ===== -->
         <div id="tab-admin-panel" class="tab-content">
             <div class="oneui-card">
-                <p class="section-title">⚙️ Đăng thông báo toàn server</p>
+                <div class="section-title">⚙️ Đăng thông báo</div>
                 <div class="form-group">
-                    <label>Tiêu đề bảng tin</label>
+                    <label>Tiêu đề</label>
                     <input type="text" id="notice-title" placeholder="Nhập tiêu đề ngắn gọn...">
                 </div>
                 <div class="form-group">
-                    <label>Nội dung chi tiết thông báo</label>
-                    <textarea id="notice-content" rows="5" style="resize:none;" placeholder="Nội dung truyền tải đến mọi thành viên..."></textarea>
+                    <label>Nội dung</label>
+                    <textarea id="notice-content" rows="5" style="resize:none;" placeholder="Nội dung thông báo..."></textarea>
                 </div>
-                <button class="btn-submit" style="background: #0381fe;" onclick="handlePostAnnouncement()">Phát hành bảng tin</button>
+                <button class="btn-submit" onclick="handlePostAnnouncement()">📤 Phát hành</button>
             </div>
         </div>
 
     </div>
 
+    <!-- ============================================================
+    JAVASCRIPT - HỆ THỐNG ĐẦY ĐỦ
+    ============================================================ -->
     <script>
-        // HỆ THỐNG ĐỒNG BỘ THÔNG BÁO HỆ THỐNG FIREBASE REALTIME
+        // ============================================================
+        // FIREBASE CONFIG
+        // ============================================================
         const firebaseConfig = {
             apiKey: "AIzaSyA1jVOVPHECGp27Qgi4U4r71fiKm_a3biM",
             authDomain: "netking-b0ad0.firebaseapp.com",
@@ -558,73 +1321,75 @@
             messagingSenderId: "374692503086",
             appId: "1:374692503086:web:0c46168ddfb8dadf45c9bf"
         };
-        
+
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
+        // ============================================================
+        // STATE
+        // ============================================================
         let databaseNotices = [];
-        let currentUser = localStorage.getItem("netking_current_user") || "guest"; 
-        let nextActionFlow = ""; 
+        let currentUser = localStorage.getItem("netking_current_user") || "guest";
+        let nextActionFlow = "";
 
+        // ============================================================
+        // INIT
+        // ============================================================
         window.onload = function() {
             checkUserSession();
             updateHeaderAuthButtonUI();
             initNetkingCounters();
-            loadAppliedTheme(); // Khởi tạo theme lưu trữ
+            loadAppliedTheme();
         };
 
-        // --- CẤU HÌNH THAY ĐỔI GIAO DIỆN LIGHT / DARK MODE ---
+        // ============================================================
+        // THEME
+        // ============================================================
         function loadAppliedTheme() {
-            const savedTheme = localStorage.getItem("netking_theme") || "light";
-            document.body.setAttribute("data-theme", savedTheme);
-            document.getElementById("theme-switch").checked = (savedTheme === "dark");
+            const saved = localStorage.getItem("netking_theme") || "light";
+            document.body.setAttribute("data-theme", saved);
+            document.getElementById("theme-switch").checked = (saved === "dark");
         }
 
         function toggleThemeMode(checkbox) {
-            const targetTheme = checkbox.checked ? "dark" : "light";
-            document.body.setAttribute("data-theme", targetTheme);
-            localStorage.setItem("netking_theme", targetTheme);
+            const target = checkbox.checked ? "dark" : "light";
+            document.body.setAttribute("data-theme", target);
+            localStorage.setItem("netking_theme", target);
         }
 
         function openSettingsModal() { document.getElementById("settings-modal").classList.add("active"); }
+
         function closeSettingsModal() { document.getElementById("settings-modal").classList.remove("active"); }
 
-
-        // --- HỆ THỐNG BỘ ĐẾM TRUY CẬP TRANG FILES (ĐỒNG BỘ FIREBASE REALTIME CHUẨN) ---
+        // ============================================================
+        // COUNTERS
+        // ============================================================
         function initNetkingCounters() {
             const visitsRef = db.ref('total_visits');
-            
-            visitsRef.transaction((currentValue) => {
-                return (currentValue || 0) + 1;
+            visitsRef.transaction((v) => (v || 0) + 1);
+            visitsRef.on('value', (snap) => {
+                document.getElementById('totalVisits').innerText = (snap.val() || 0).toLocaleString();
             });
-
-            visitsRef.on('value', (snapshot) => {
-                const totalVisits = snapshot.val() || 0;
-                document.getElementById('totalVisits').innerText = totalVisits.toLocaleString();
-            });
-
             updateLiveUsers();
             setInterval(updateLiveUsers, 4000);
         }
 
         function updateLiveUsers() {
             const hour = new Date().getHours();
-            let baseActive = 18; 
-            
-            if (hour >= 19 && hour <= 23) baseActive = 54; 
-            else if (hour >= 1 && hour <= 6) baseActive = 5;   
-            
-            const fluctuation = Math.floor(Math.random() * 9) - 4; 
-            const currentActive = Math.max(3, baseActive + fluctuation);
-            
-            document.getElementById('activeUsers').innerText = currentActive;
+            let base = 18;
+            if (hour >= 19 && hour <= 23) base = 54;
+            else if (hour >= 1 && hour <= 6) base = 5;
+            const active = Math.max(3, base + Math.floor(Math.random() * 9) - 4);
+            document.getElementById('activeUsers').innerText = active;
         }
 
-        // CHẶN TẢI FILE KHI CHƯA ĐĂNG NHẬP / ĐĂNG KÝ
+        // ============================================================
+        // AUTH
+        // ============================================================
         function downloadFileProtect(url, isRisk) {
             if (currentUser === "guest") {
                 nextActionFlow = "open_auth_sheet";
-                showStatusModal("Yêu cầu hệ thống", "Vui lòng Đăng ký hoặc Đăng nhập tài khoản hệ thống để có quyền tải tập tin này!");
+                showStatusModal("Yêu cầu đăng nhập", "Vui lòng đăng ký hoặc đăng nhập để tải tập tin!");
             } else {
                 window.open(url, '_blank');
             }
@@ -636,34 +1401,33 @@
         }
 
         function updateHeaderAuthButtonUI() {
-            const authBtn = document.getElementById("header-auth-action");
-            const adminTabBtn = document.getElementById("tab-btn-admin-panel");
-            const savedDisplayUser = localStorage.getItem("netking_session_username") || "Tài khoản";
+            const btn = document.getElementById("header-auth-action");
+            const adminTab = document.getElementById("tab-btn-admin-panel");
+            const name = localStorage.getItem("netking_session_username") || "Tài khoản";
 
             if (currentUser === "guest") {
-                authBtn.innerText = "Đăng nhập";
-                authBtn.className = "header-auth-btn auth-state-signin";
-                adminTabBtn.style.display = "none";
+                btn.innerText = "Đăng nhập";
+                btn.className = "header-auth-btn auth-state-signin";
+                adminTab.style.display = "none";
             } else {
-                authBtn.innerText = savedDisplayUser;
-                authBtn.className = "header-auth-btn auth-state-logged";
-                
-                if (savedDisplayUser.toLowerCase() === "xine3d") {
-                    adminTabBtn.style.display = "block";
-                } else {
-                    adminTabBtn.style.display = "none";
-                }
+                btn.innerText = name;
+                btn.className = "header-auth-btn auth-state-logged";
+                adminTab.style.display = (name.toLowerCase() === "xine3d") ? "block" : "none";
             }
         }
 
         function openAccountInfoModal() {
-            document.getElementById("info-display-username").innerText = localStorage.getItem("netking_session_username") || "N/A";
-            document.getElementById("info-display-password").innerText = localStorage.getItem("netking_session_password") || "••••••••";
+            document.getElementById("info-display-username").innerText = localStorage.getItem("netking_session_username") ||
+            "N/A";
+            document.getElementById("info-display-password").innerText = localStorage.getItem("netking_session_password") ||
+            "••••••••";
             document.getElementById("info-display-rank").innerText = currentUser.toUpperCase();
             document.getElementById("account-info-modal").classList.add("active");
         }
-        
-        function closeAccountInfoModal() { document.getElementById("account-info-modal").classList.remove("active"); }
+
+        function closeAccountInfoModal() {
+            document.getElementById("account-info-modal").classList.remove("active");
+        }
 
         function processLogout() {
             closeAccountInfoModal();
@@ -671,11 +1435,9 @@
             localStorage.setItem("netking_current_user", "guest");
             localStorage.removeItem("netking_session_username");
             localStorage.removeItem("netking_session_password");
-            
             updateHeaderAuthButtonUI();
             switchTab('tab-files');
-            
-            showStatusModal("Hệ thống", "Đã đăng xuất tài khoản.");
+            showStatusModal("Hệ thống", "Đã đăng xuất.");
             document.getElementById("welcome-modal").classList.add("active");
             startWelcomeCounter();
         }
@@ -690,107 +1452,93 @@
         }
 
         function startWelcomeCounter() {
-            const closeBtn = document.getElementById("close-welcome-btn");
-            let sec = 3; closeBtn.disabled = true; closeBtn.innerText = `${sec}s`;
+            const btn = document.getElementById("close-welcome-btn");
+            let sec = 3;
+            btn.disabled = true;
+            btn.innerText = `${sec}s`;
             const timer = setInterval(() => {
                 sec--;
-                if(sec > 0) closeBtn.innerText = `${sec}s`;
+                if (sec > 0) btn.innerText = `${sec}s`;
                 else {
                     clearInterval(timer);
-                    closeBtn.innerText = "Đóng"; closeBtn.disabled = false;
-                    closeBtn.onclick = () => document.getElementById("welcome-modal").classList.remove("active");
+                    btn.innerText = "Đóng";
+                    btn.disabled = false;
+                    btn.onclick = () => document.getElementById("welcome-modal").classList.remove("active");
                 }
             }, 1000);
         }
 
-        function switchTab(tabId) {
-            const loader = document.getElementById("loading-frame");
-            loader.classList.add("active");
+        // ============================================================
+        // AUTH HANDLERS
+        // ============================================================
+        function handleAuth(action) {
+            if (action === 'register') {
+                const user = document.getElementById("reg-user").value.trim();
+                const pass = document.getElementById("reg-pass").value.trim();
+                if (user.length > 10 || pass.length > 20) {
+                    return showStatusModal("Lỗi", "Tài khoản ≤ 10 ký tự, mật khẩu ≤ 20 ký tự!");
+                }
+                db.ref("users/" + user.toLowerCase()).set({ username: user, password: pass });
+                nextActionFlow = "just_close";
+                showStatusModal("Đăng ký", "Tạo tài khoản thành công! Mời đăng nhập.");
+                toggleAuthForm('login');
+            } else {
+                const userInput = document.getElementById("login-user").value.trim();
+                const passInput = document.getElementById("login-pass").value.trim();
+                if (!userInput || !passInput) return showStatusModal("Lỗi", "Vui lòng điền đủ thông tin!");
 
-            setTimeout(() => {
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                
-                const targetContent = document.getElementById(tabId);
-                targetContent.classList.add('active');
-                
-                if(tabId === 'tab-files') document.querySelectorAll('.tab-btn')[0].classList.add('active');
-                if(tabId === 'tab-verified') document.querySelectorAll('.tab-btn')[1].classList.add('active');
-                if(tabId === 'tab-announcements') document.querySelectorAll('.tab-btn')[2].classList.add('active');
-                if(tabId === 'tab-admin-panel') document.getElementById('tab-btn-admin-panel').classList.add('active');
-                
-                if(tabId === 'tab-announcements' && databaseNotices.length === 0) {
-                    db.ref("announcements").on("value", (snapshot) => {
-                        const data = snapshot.val();
-                        databaseNotices = data ? Object.values(data) : [];
-                        databaseNotices.reverse(); 
-                        renderServerAnnouncements();
-                    });
+                const userLower = userInput.toLowerCase();
+
+                // Admin hardcode
+                if (userLower === "xine3d" && passInput === "Thinh_2012") {
+                    currentUser = "admin";
+                    localStorage.setItem("netking_current_user", "admin");
+                    localStorage.setItem("netking_session_username", "xine3d");
+                    localStorage.setItem("netking_session_password", "Thinh_2012");
+                    nextActionFlow = "login_success_clear";
+                    updateHeaderAuthButtonUI();
+                    showStatusModal("Admin Core", "Chào mừng Admin!");
+                    return;
                 }
 
-                loader.classList.remove("active");
-            }, 300);
+                db.ref("users/" + userLower).once("value", (snapshot) => {
+                    const data = snapshot.val();
+                    if (data && data.password === passInput) {
+                        currentUser = "member";
+                        localStorage.setItem("netking_current_user", "member");
+                        localStorage.setItem("netking_session_username", data.username);
+                        localStorage.setItem("netking_session_password", passInput);
+                        nextActionFlow = "login_success_clear";
+                        updateHeaderAuthButtonUI();
+                        showStatusModal("Đăng nhập", "Đăng nhập thành công!");
+                    } else {
+                        showStatusModal("Lỗi", "Tài khoản hoặc mật khẩu không đúng.");
+                    }
+                });
+            }
         }
 
-        function renderServerAnnouncements() {
-            const container = document.getElementById("announcements-container");
-            container.innerHTML = "";
-
-            if (databaseNotices.length === 0) {
-                container.innerHTML = `<p style="color:#9aa0a6; font-size:0.85rem; padding:15px; text-align:center;">Chưa có thông báo nào từ ban quản trị.</p>`;
-                return;
-            }
-
-            databaseNotices.forEach(notice => {
-                const html = `
-                    <div class="notice-item">
-                        <h4>📌 ${notice.title} <span class="badge-admin">Admin</span></h4>
-                        <p class="file-desc" style="white-space: pre-line; margin-top:4px;">${notice.content}</p>
-                        <div class="file-meta" style="margin-top:6px; font-size:0.7rem;">
-                            Đăng bởi: ${notice.author} • ${notice.date}
-                        </div>
-                    </div>
-                `;
-                container.insertAdjacentHTML('beforeend', html);
-            });
+        function openAuthModal(type) {
+            document.getElementById("auth-modal").classList.add("active");
+            toggleAuthForm(type);
         }
 
-        function handlePostAnnouncement() {
-            const title = document.getElementById("notice-title").value.trim();
-            const content = document.getElementById("notice-content").value.trim();
-            const savedDisplayUser = localStorage.getItem("netking_session_username") || "guest";
-
-            if (savedDisplayUser.toLowerCase() !== "xine3d") {
-                return showStatusModal("Lỗi phân quyền", "Quyền hạn của ông không hợp lệ để thực hiện!");
-            }
-
-            if (!title || !content) {
-                return showStatusModal("Thiếu thông tin", "Vui lòng điền tiêu đề và nội dung bảng tin!");
-            }
-
-            const newNoticeRef = db.ref("announcements").push();
-            const now = new Date();
-            const dateString = now.toLocaleDateString('vi-VN') + " - " + now.toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
-
-            newNoticeRef.set({
-                id: newNoticeRef.key,
-                title: title,
-                content: content,
-                author: savedDisplayUser,
-                date: dateString
-            }).then(() => {
-                document.getElementById("notice-title").value = "";
-                document.getElementById("notice-content").value = "";
-                nextActionFlow = "go_to_announcements";
-                showStatusModal("Bảng tin", "Thông báo đã được gửi lên hệ thống!");
-            });
+        function closeAuthModal() {
+            document.getElementById("auth-modal").classList.remove("active");
         }
 
+        function toggleAuthForm(type) {
+            document.getElementById("login-form-wrapper").style.display = (type === 'login') ? "block" : "none";
+            document.getElementById("signin-form-wrapper").style.display = (type === 'login') ? "none" : "block";
+        }
+
+        // ============================================================
+        // STATUS MODAL
+        // ============================================================
         function showStatusModal(title, msg) {
-            const sModal = document.getElementById("status-modal");
             document.getElementById("status-title").innerText = title;
             document.getElementById("status-desc").innerText = msg;
-            sModal.classList.add("active");
+            document.getElementById("status-modal").classList.add("active");
         }
 
         function closeStatusModal() {
@@ -803,63 +1551,101 @@
             } else if (nextActionFlow === "open_auth_sheet") {
                 openAuthModal('signin');
             }
-            nextActionFlow = "just_close";
+            nextActionFlow = "";
         }
 
-        function handleAuth(action) {
-            if (action === 'register') {
-                const user = document.getElementById("reg-user").value.trim();
-                const pass = document.getElementById("reg-pass").value.trim();
-                if (user.length > 10 || pass.length > 20) return showStatusModal("Lỗi dữ liệu", "Tài khoản tối đa 10 kí tự, mật khẩu tối đa 20 kí tự!");
+        // ============================================================
+        // TAB SWITCH
+        // ============================================================
+        function switchTab(tabId) {
+            const loader = document.getElementById("loading-frame");
+            loader.classList.add("active");
 
-                db.ref("users/" + user.toLowerCase()).set({ username: user, password: pass });
-                nextActionFlow = "just_close"; 
-                showStatusModal("Đăng ký", "Tạo tài khoản thành công! Mời ông đăng nhập.");
-                toggleAuthForm('login');
-            } 
-            else {
-                let userInput = document.getElementById("login-user").value.trim();
-                const passInput = document.getElementById("login-pass").value.trim();
-                if(!userInput || !passInput) return alert("Vui lòng điền đủ tài khoản và mật khẩu!");
+            setTimeout(() => {
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-                let userLower = userInput.toLowerCase();
+                const target = document.getElementById(tabId);
+                target.classList.add('active');
 
-                if (userLower === "xine3d" && passInput === "Thinh_2012") {
-                    currentUser = "admin";
-                    localStorage.setItem("netking_current_user", "admin"); 
-                    localStorage.setItem("netking_session_username", "xine3d");
-                    localStorage.setItem("netking_session_password", "Thinh_2012");
-                    
-                    nextActionFlow = "login_success_clear"; 
-                    updateHeaderAuthButtonUI();
-                    showStatusModal("Admin Core", "Chào hệ thống, chúc một ngày tốt lành!");
-                    return;
+                const btnMap = {
+                    'tab-files': 0,
+                    'tab-verified': 1,
+                    'tab-announcements': 2,
+                    'tab-admin-panel': 3
+                };
+                const idx = btnMap[tabId];
+                if (idx !== undefined) {
+                    document.querySelectorAll('.tab-btn')[idx].classList.add('active');
                 }
 
-                db.ref("users/" + userLower).once("value", (snapshot) => {
-                    const userData = snapshot.val();
-                    if (userData && userData.password === passInput) {
-                        currentUser = "member";
-                        localStorage.setItem("netking_current_user", "member"); 
-                        localStorage.setItem("netking_session_username", userData.username);
-                        localStorage.setItem("netking_session_password", passInput);
+                if (tabId === 'tab-announcements' && databaseNotices.length === 0) {
+                    db.ref("announcements").on("value", (snapshot) => {
+                        const data = snapshot.val();
+                        databaseNotices = data ? Object.values(data) : [];
+                        databaseNotices.reverse();
+                        renderServerAnnouncements();
+                    });
+                }
 
-                        nextActionFlow = "login_success_clear"; 
-                        updateHeaderAuthButtonUI();
-                        showStatusModal("Đăng nhập", "Đăng nhập thành công!");
-                    } else {
-                        showStatusModal("Lỗi hệ thống", "Tài khoản hoặc mật khẩu không đúng.");
-                    }
-                });
-            }
+                loader.classList.remove("active");
+            }, 300);
         }
 
-        function openAuthModal(type) { document.getElementById("auth-modal").classList.add("active"); toggleAuthForm(type); }
-        function closeAuthModal() { document.getElementById("auth-modal").classList.remove("active"); }
-        function toggleAuthForm(type) {
-            document.getElementById("login-form-wrapper").style.display = type === 'login' ? "block" : "none";
-            document.getElementById("signin-form-wrapper").style.display = type === 'login' ? "none" : "block";
+        // ============================================================
+        // ANNOUNCEMENTS
+        // ============================================================
+        function renderServerAnnouncements() {
+            const container = document.getElementById("announcements-container");
+            container.innerHTML = "";
+            if (databaseNotices.length === 0) {
+                container.innerHTML =
+                    `<p style="color:var(--text-muted); font-size:0.85rem; padding:12px; text-align:center;">Chưa có thông báo nào.</p>`;
+                return;
+            }
+            databaseNotices.forEach(n => {
+                const html = `
+                    <div class="notice-item">
+                        <h4>📌 ${n.title} <span class="badge-admin">Admin</span></h4>
+                        <p class="file-desc" style="white-space:pre-line; margin-top:4px;">${n.content}</p>
+                        <div class="file-meta" style="margin-top:6px; font-size:0.7rem;">Đăng bởi: ${n.author} • ${n.date}</div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        function handlePostAnnouncement() {
+            const title = document.getElementById("notice-title").value.trim();
+            const content = document.getElementById("notice-content").value.trim();
+            const author = localStorage.getItem("netking_session_username") || "guest";
+
+            if (author.toLowerCase() !== "xine3d") {
+                return showStatusModal("Lỗi phân quyền", "Chỉ Admin mới có quyền đăng thông báo!");
+            }
+            if (!title || !content) {
+                return showStatusModal("Thiếu thông tin", "Vui lòng điền tiêu đề và nội dung!");
+            }
+
+            const ref = db.ref("announcements").push();
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('vi-VN') + " - " + now.toLocaleTimeString('vi-VN', { hour: '2-digit',
+                minute: '2-digit' });
+
+            ref.set({
+                id: ref.key,
+                title: title,
+                content: content,
+                author: author,
+                date: dateStr
+            }).then(() => {
+                document.getElementById("notice-title").value = "";
+                document.getElementById("notice-content").value = "";
+                nextActionFlow = "go_to_announcements";
+                showStatusModal("Thành công", "Thông báo đã được gửi lên hệ thống!");
+            });
         }
     </script>
+
 </body>
-</html>l>
+</html>
