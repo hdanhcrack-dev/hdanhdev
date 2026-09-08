@@ -1,139 +1,113 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<title>HDanh • Official</title>
+<meta name="description" content="Trang chính thức của HDanh">
 
-    <title>HDanh</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="HDanh • Official">
+<meta property="og:description" content="Chào mừng đến với trang của HDanh">
+<meta property="og:image" content="https://hdanhcrack-dev.github.io/hdanhdev/thumb.jpg">
+<meta property="og:image:alt" content="HDanh">
+<meta property="og:url" content="https://hdanhcrack-dev.github.io/hdanhdev/">
+<meta property="og:site_name" content="HDanh">
 
-    <meta name="description"
-          content="Trang chia sẻ của HDanh">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HDanh • Official">
+<meta name="twitter:description" content="Chào mừng đến với trang của HDanh">
+<meta name="twitter:image" content="https://hdanhcrack-dev.github.io/hdanhdev/thumb.jpg">
 
-    <!-- ===== OPEN GRAPH - THUMBNAIL ===== -->
-    <meta property="og:type"
-          content="website">
-
-    <meta property="og:title"
-          content="Haa Hoang Danh">
-
-    <meta property="og:description"
-          content="Haa Hoangg Danhh Kiss Ph Ngoc Nhi">
-
-    <meta property="og:image"
-          content="https://hdanhcrack-dev.github.io/hdanhdev/thumb.jpg">
-
-    <meta property="og:image:alt"
-          content="HDanh">
-
-    <meta property="og:url"
-          content="https://hdanhcrack-dev.github.io/hdanhdev/">
-
-    <meta property="og:site_name"
-          content="HDanh">
-
-    <!-- ===== TWITTER CARD ===== -->
-    <meta name="twitter:card"
-          content="summary_large_image">
-
-    <meta name="twitter:title"
-          content="Haa Hoang Danh">
-
-    <meta name="twitter:description"
-          content="Haa Hoangg Danhh Kiss Ph Ngoc Nhii">
-
-    <meta name="twitter:image"
-          content="https://hdanhcrack-dev.github.io/hdanhdev/thumb.jpg">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-height: 100vh;
-            background: #111;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            width: 92%;
-            max-width: 700px;
-            text-align: center;
-        }
-
-        .thumb {
-            width: 100%;
-            display: block;
-
-            border-radius: 18px;
-
-            box-shadow:
-                0 15px 50px rgba(0, 0, 0, 0.6);
-        }
-
-        h1 {
-            margin-top: 22px;
-            font-size: 32px;
-            letter-spacing: 2px;
-        }
-
-        p {
-            margin-top: 10px;
-            color: #aaa;
-            font-size: 16px;
-        }
-
-        .button {
-            display: inline-block;
-            margin-top: 22px;
-            padding: 12px 25px;
-
-            color: white;
-            text-decoration: none;
-
-            border: 1px solid #444;
-            border-radius: 10px;
-
-            transition: 0.2s;
-        }
-
-        .button:hover {
-            background: #222;
-        }
-    </style>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 50% 15%,#27304a 0,transparent 32%),
+    radial-gradient(circle at 10% 90%,#171d31 0,transparent 30%),
+    #07080d;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;
+  background-image:linear-gradient(#fff 1px,transparent 1px),
+                   linear-gradient(90deg,#fff 1px,transparent 1px);
+  background-size:42px 42px;
+}
+.wrap{width:min(92%,760px);margin:auto;padding:55px 0 45px;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;border:1px solid #ffffff22;border-radius:999px;
+  background:#ffffff0b;backdrop-filter:blur(10px);
+  color:#d8dbe7;font-size:13px;letter-spacing:1px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 14px #fff}
+.hero{margin-top:22px;position:relative}
+.hero:after{
+  content:"";position:absolute;left:10%;right:10%;bottom:-25px;height:70px;
+  background:#8b9cff33;filter:blur(35px);z-index:-1
+}
+.thumb{
+  width:100%;max-height:68vh;object-fit:cover;display:block;
+  border-radius:24px;border:1px solid #ffffff20;
+  box-shadow:0 25px 80px #000b,0 0 45px #7f8cff22;
+}
+h1{
+  margin-top:30px;font-size:clamp(38px,9vw,68px);
+  letter-spacing:5px;text-transform:uppercase;
+  text-shadow:0 0 28px #aeb8ff55;
+}
+.sub{margin-top:10px;color:#aeb3c2;font-size:16px}
+.buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.btn{
+  color:#fff;text-decoration:none;padding:13px 22px;border-radius:13px;
+  border:1px solid #ffffff20;background:#ffffff0b;
+  backdrop-filter:blur(10px);transition:.2s;
+}
+.btn:hover{transform:translateY(-2px);background:#ffffff14;border-color:#ffffff38}
+.btn.primary{background:#fff;color:#080910;border-color:#fff;font-weight:700}
+.info{
+  margin-top:34px;padding:20px;border:1px solid #ffffff14;border-radius:18px;
+  background:#ffffff07;text-align:left;backdrop-filter:blur(12px)
+}
+.info strong{display:block;margin-bottom:7px}
+.info span{color:#9da3b5;font-size:14px;line-height:1.6}
+footer{margin-top:34px;color:#626879;font-size:12px}
+@media(max-width:520px){
+  .wrap{padding-top:35px}
+  .thumb{border-radius:18px}
+  h1{letter-spacing:3px}
+}
+</style>
 </head>
 
 <body>
+<main class="wrap">
+  <div class="badge"><span class="dot"></span> HDANH • OFFICIAL</div>
 
-    <main class="container">
+  <section class="hero">
+    <img class="thumb" src="thumb.jpg" alt="HDanh">
+  </section>
 
-        <img
-            class="thumb"
-            src="thumb.jpg"
-            alt="HDanh">
+  <h1>HDanh</h1>
+  <p class="sub">Ph Ngoc Nhiii  ✦</p>
 
-        <h1>Cái Lồn Mẹ Mày Ei </h1>
+  <div class="buttons">
+    <a class="btn primary" href="#about">Hotwar HDanh</a>
+    <a class="btn" href="https://hdanhcrack-dev.github.io/hdanhdev/">Trang chủ</a>
+  </div>
 
-        <p>
-            Haa Hoangg Danhh Love Ngocc Nhii
-        </p>
+  <section class="info" id="about">
+    <strong>✨ HDanh</strong>
+    <span>Ank La Haa Hoanq Danhh Withlove Ngocc Nhii </span>
+  </section>
 
-        <a
-            class="button"
-            href="https://hdanhcrack-dev.github.io/hdanhdev/">
-            Truy cập trang
-        </a>
-
-    </main>
-
+  <footer>© Yêu Em 4 Mùa</footer>
+</main>
 </body>
 </html>
