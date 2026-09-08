@@ -2,164 +2,1226 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>HDanh • Music</title>
-<meta name="description" content="HDanh • Anime • Music">
+<meta name="description" content="HDanh • Ngocc Nhii">
+
+<!-- ================= OPEN GRAPH / ZALO ================= -->
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="HDanh • Music">
 <meta property="og:description" content="HDanh • Anime • Music">
-<meta property="og:image" content="https://hdanhcrack-dev.github.io/hdanhdev/thumb.jpg">
-<meta property="og:url" content="https://hdanhcrack-dev.github.io/hdanhdev/">
-<meta property="og:site_name" content="HDanh">
+
+<meta property="og:image"
+content="https://hdanhcrack-dev.github.io/hdanhdev/thumb.jpg">
+
+<meta property="og:image:alt" content="HDanh">
+
+<meta property="og:url"
+content="https://hdanhcrack-dev.github.io/hdanhdev/">
+
+<meta property="og:site_name" content="Ph Ngoc Nhi">
+
+<!-- ================= TWITTER ================= -->
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title"
+content="Nhii Jeuu Oii">
+
+<meta name="twitter:description"
+content="Haa Hoangg Danhh Withlove Ngocc Nhi">
+
+<meta name="twitter:image"
+content="https://hdanhcrack-dev.github.io/hdanhdev/thumb.jpg">
+
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{
- min-height:100vh;color:#fff;font-family:Arial,sans-serif;
- background:#05060a;overflow-x:hidden;
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-body:before{
- content:"";position:fixed;inset:0;z-index:-2;
- background:
- radial-gradient(circle at 50% 5%,#6674c933,transparent 28%),
- radial-gradient(circle at 10% 80%,#33406b22,transparent 30%),#05060a;
+
+html {
+    scroll-behavior: smooth;
 }
-body:after{
- content:"";position:fixed;inset:0;z-index:-1;opacity:.06;pointer-events:none;
- background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);
- background-size:45px 45px;
+
+body {
+
+    min-height: 100vh;
+
+    color: #fff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 5%,
+            #6674c933 0,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 10% 85%,
+            #33406b22 0,
+            transparent 30%
+        ),
+
+        #05060a;
+
+    overflow-x: hidden;
 }
-.app{width:min(94%,780px);margin:auto;padding:30px 0 55px}
-.top{
- display:flex;justify-content:space-between;align-items:center;
- padding:10px 4px 24px
+
+
+/* =====================================================
+   GRID
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    opacity: .045;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
 }
-.logo{font-weight:800;letter-spacing:3px}
-.status{font-size:12px;color:#aeb4c6}
-.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#fff;margin-right:6px;box-shadow:0 0 12px #fff}
-.card{
- padding:18px;border:1px solid #ffffff17;border-radius:28px;
- background:#ffffff08;backdrop-filter:blur(18px);
- box-shadow:0 30px 90px #000b;
+
+
+/* =====================================================
+   AMBIENT LIGHT
+===================================================== */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+
+    background: #7180ff18;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+
+    z-index: -1;
 }
-.cover{
- position:relative;overflow:hidden;border-radius:21px;
- aspect-ratio:16/10;background:#10121a
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+.app {
+
+    width: min(94%, 780px);
+
+    margin: auto;
+
+    padding:
+        30px
+        0
+        60px;
 }
-.cover img{width:100%;height:100%;object-fit:cover;display:block}
-.cover:after{
- content:"";position:absolute;inset:0;
- background:linear-gradient(180deg,transparent 50%,#000b 100%);
- pointer-events:none
+
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+.top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding:
+        8px
+        5px
+        25px;
 }
-.center{
- position:absolute;inset:0;display:grid;place-items:center;z-index:2
+
+.logo {
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 20px #ffffff22;
 }
-.play{
- width:74px;height:74px;border:1px solid #ffffff55;border-radius:50%;
- background:#ffffffdd;color:#090a0f;font-size:25px;padding-left:4px;
- cursor:pointer;box-shadow:0 0 40px #fff3;transition:.2s
+
+.status {
+
+    color: #9da4b7;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
 }
-.play:hover{transform:scale(1.08)}
-.details{padding:24px 4px 4px}
-h1{font-size:clamp(34px,8vw,58px);letter-spacing:4px}
-.subtitle{color:#969cad;margin-top:7px}
-.player{
- margin-top:22px;padding:18px;border:1px solid #ffffff14;
- border-radius:20px;background:#0005
+
+.status i {
+
+    display: inline-block;
+
+    width: 7px;
+    height: 7px;
+
+    margin-right: 6px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 8px #fff,
+        0 0 18px #fff;
 }
-.track{display:flex;justify-content:space-between;gap:15px;font-size:14px}
-.track span:last-child{color:#8e96a9}
-input[type=range]{width:100%;margin:17px 0 8px;accent-color:#fff}
-.controls{display:flex;align-items:center;gap:14px}
-.small{
- width:42px;height:42px;border-radius:50%;border:1px solid #ffffff20;
- background:#ffffff0a;color:#fff;cursor:pointer
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card {
+
+    padding: 17px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius: 28px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.65),
+        inset 0 1px 0 rgba(255,255,255,.07);
 }
-.big{width:50px;height:50px;background:#fff;color:#08090d}
-.time{font-size:12px;color:#7f8799;margin-left:auto}
-.note{margin-top:18px;font-size:12px;color:#72798a;line-height:1.5}
-footer{text-align:center;color:#555c6d;font-size:12px;margin-top:25px}
+
+
+/* =====================================================
+   COVER
+===================================================== */
+
+.cover {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 21px;
+
+    aspect-ratio: 16 / 10;
+
+    background: #10121a;
+}
+
+.cover img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transform: scale(1.001);
+
+    transition:
+        transform 8s ease;
+}
+
+.cover:hover img {
+
+    transform:
+        scale(1.035);
+}
+
+.cover::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 40%,
+            rgba(0,0,0,.82) 100%
+        );
+}
+
+
+/* =====================================================
+   PLAY BUTTON
+===================================================== */
+
+.center {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    z-index: 2;
+}
+
+.play {
+
+    width: 76px;
+    height: 76px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.5);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.92);
+
+    color: #08090d;
+
+    font-size: 24px;
+
+    padding-left: 4px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,.18),
+        0 0 70px rgba(255,255,255,.12);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.play:hover {
+
+    transform:
+        scale(1.08);
+
+    box-shadow:
+        0 0 40px rgba(255,255,255,.30),
+        0 0 90px rgba(255,255,255,.16);
+}
+
+
+/* =====================================================
+   DETAILS
+===================================================== */
+
+.details {
+
+    padding:
+        25px
+        4px
+        4px;
+}
+
+h1 {
+
+    font-size:
+        clamp(
+            38px,
+            9vw,
+            62px
+        );
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 18px rgba(255,255,255,.12),
+        0 0 40px rgba(160,175,255,.30);
+}
+
+.subtitle {
+
+    margin-top: 8px;
+
+    color: #949bad;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   MUSIC PLAYER
+===================================================== */
+
+.player {
+
+    margin-top: 23px;
+
+    padding: 19px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 20px;
+
+    background:
+        rgba(0,0,0,.30);
+
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+}
+
+.track {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    font-size: 14px;
+}
+
+.track span:last-child {
+
+    color: #858da0;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   SEEK BAR
+===================================================== */
+
+input[type="range"] {
+
+    width: 100%;
+
+    height: 4px;
+
+    margin:
+        18px
+        0
+        12px;
+
+    accent-color: white;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   CONTROLS
+===================================================== */
+
+.controls {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+.small {
+
+    width: 42px;
+    height: 42px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+.small:hover {
+
+    transform:
+        scale(1.06);
+
+    background:
+        rgba(255,255,255,.13);
+}
+
+.big {
+
+    width: 50px;
+    height: 50px;
+
+    background: white;
+
+    color: #08090d;
+}
+
+.time {
+
+    margin-left: auto;
+
+    color: #777f91;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   NOTE
+===================================================== */
+
+.note {
+
+    margin-top: 18px;
+
+    color: #707789;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    margin-top: 28px;
+
+    color: #555c6c;
+
+    text-align: center;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   SNOW
+===================================================== */
+
+#snow {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 9999;
+}
+
+.snowflake {
+
+    position: absolute;
+
+    top: -30px;
+
+    color: #fff;
+
+    user-select: none;
+
+    pointer-events: none;
+
+    opacity: .7;
+
+    will-change: transform;
+
+    animation-name:
+        snowFall;
+
+    animation-timing-function:
+        linear;
+
+    animation-iteration-count:
+        infinite;
+}
+
+
+/* =====================================================
+   SNOW ANIMATION
+===================================================== */
+
+@keyframes snowFall {
+
+    0% {
+
+        transform:
+            translate3d(
+                0,
+                -40px,
+                0
+            )
+            rotate(0deg);
+    }
+
+    25% {
+
+        transform:
+            translate3d(
+                25px,
+                25vh,
+                0
+            )
+            rotate(90deg);
+    }
+
+    50% {
+
+        transform:
+            translate3d(
+                -25px,
+                50vh,
+                0
+            )
+            rotate(180deg);
+    }
+
+    75% {
+
+        transform:
+            translate3d(
+                30px,
+                75vh,
+                0
+            )
+            rotate(270deg);
+    }
+
+    100% {
+
+        transform:
+            translate3d(
+                -15px,
+                110vh,
+                0
+            )
+            rotate(360deg);
+    }
+}
+
+
+/* =====================================================
+   MOBILE OPTIMIZATION
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .app {
+
+        padding-top: 24px;
+    }
+
+    .card {
+
+        padding: 13px;
+
+        border-radius: 23px;
+    }
+
+    .cover {
+
+        border-radius: 17px;
+    }
+
+    .player {
+
+        padding: 15px;
+    }
+
+    .snowflake {
+
+        font-size: 8px;
+
+        opacity: .6;
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .cover img {
+
+        transition: none;
+    }
+
+    .snowflake {
+
+        animation-duration: 12s;
+    }
+}
+
 </style>
 </head>
-<body>
-<div class="app">
-  <header class="top">
-    <div class="logo">Ph Ngocc Nhii</div>
-    <div class="status"><i></i>ONLINE</div>
-  </header>
 
-  <section class="card">
-    <div class="cover">
-      <img src="thumb.jpg" alt="Ngocc Nhii">
-      <div class="center">
-        <button class="play" id="heroPlay" aria-label="Phát nhạc">▶</button>
-      </div>
+
+<body>
+
+
+<!-- ===================================================
+     SNOW LAYER
+=================================================== -->
+
+<div id="snow"></div>
+
+
+<div class="app">
+
+
+<!-- ===================================================
+     TOP
+=================================================== -->
+
+<header class="top">
+
+    <div class="logo">
+        HDANH
     </div>
+
+    <div class="status">
+
+        <i></i>
+
+        ONLINE
+
+    </div>
+
+</header>
+
+
+<!-- ===================================================
+     MAIN CARD
+=================================================== -->
+
+<section class="card">
+
+
+    <!-- COVER -->
+
+    <div class="cover">
+
+        <img
+            src="thumb.jpg"
+            alt="HDanh">
+
+        <div class="center">
+
+            <button
+                class="play"
+                id="heroPlay"
+                aria-label="Phát nhạc">
+
+                ▶
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- DETAILS -->
 
     <div class="details">
-      <h1>HDanh</h1>
-      <div class="subtitle">Haa Hoangg Danhh Kiss Ph Ngoc Nhii</div>
 
-      <div class="player">
-        <div class="track">
-          <span id="songName">Haa Hoangg Danhh</span>
-          <span id="state">PAUSED</span>
+        <h1>
+            HDanh
+        </h1>
+
+        <div class="subtitle">
+
+            Anime • Music • Night Vibes
+
         </div>
 
-        <input id="seek" type="range" min="0" max="100" value="0">
 
-        <div class="controls">
-          <button class="small" id="back">↶</button>
-          <button class="small big" id="play">▶</button>
-          <button class="small" id="forward">↷</button>
-          <span class="time" id="time">00:00 / 00:00</span>
+        <!-- PLAYER -->
+
+        <div class="player">
+
+
+            <div class="track">
+
+                <span>
+                    HDanh Music
+                </span>
+
+                <span id="state">
+                    PAUSED
+                </span>
+
+            </div>
+
+
+            <input
+                id="seek"
+                type="range"
+                min="0"
+                max="100"
+                value="0">
+
+
+            <div class="controls">
+
+
+                <button
+                    class="small"
+                    id="back">
+
+                    ↶
+
+                </button>
+
+
+                <button
+                    class="small big"
+                    id="play">
+
+                    ▶
+
+                </button>
+
+
+                <button
+                    class="small"
+                    id="forward">
+
+                    ↷
+
+                </button>
+
+
+                <span
+                    class="time"
+                    id="time">
+
+                    00:00 / 00:00
+
+                </span>
+
+            </div>
+
+
+            <div class="note">
+
+                
+                <b>Haa Hoangg Danhh</b>
+                Withlove 
+                <b>Ph Ngocc Nhii</b>
+                
+
+            </div>
+
         </div>
 
-        <div class="note">
-          Bản Quyền Thuộc <b>Haa Hoangg Danhh</b> Công Chúa
-          <b>Ph Ngoc Nhi </b><b></b>.
-        </div>
-      </div>
     </div>
-  </section>
 
-  <footer>© 2026 HDanh • Made for mobile</footer>
+</section>
+
+
+<footer>
+
+    © 2026 HDanh • Made for mobile
+
+</footer>
+
+
 </div>
 
-<audio id="audio" preload="metadata" src="music.mp3"></audio>
+
+<!-- ===================================================
+     AUDIO
+=================================================== -->
+
+<audio
+    id="audio"
+    preload="metadata"
+    src="music.mp3">
+</audio>
+
 
 <script>
-const audio=document.getElementById("audio");
-const play=document.getElementById("play");
-const hero=document.getElementById("heroPlay");
-const seek=document.getElementById("seek");
-const state=document.getElementById("state");
-const time=document.getElementById("time");
 
-function fmt(s){
- if(!isFinite(s))return"00:00";
- s=Math.floor(s);return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+/* =====================================================
+   MUSIC PLAYER
+===================================================== */
+
+const audio =
+    document.getElementById("audio");
+
+const play =
+    document.getElementById("play");
+
+const hero =
+    document.getElementById("heroPlay");
+
+const seek =
+    document.getElementById("seek");
+
+const state =
+    document.getElementById("state");
+
+const time =
+    document.getElementById("time");
+
+
+function formatTime(seconds) {
+
+    if (!isFinite(seconds)) {
+
+        return "00:00";
+    }
+
+    seconds =
+        Math.floor(seconds);
+
+    const minutes =
+        Math.floor(seconds / 60);
+
+    const secs =
+        seconds % 60;
+
+    return (
+        String(minutes).padStart(2, "0")
+        +
+        ":"
+        +
+        String(secs).padStart(2, "0")
+    );
 }
-function toggle(){
- if(audio.paused){
-   audio.play().catch(()=>{});
- }else audio.pause();
+
+
+function toggleMusic() {
+
+    if (audio.paused) {
+
+        audio.play().catch(() => {});
+
+    } else {
+
+        audio.pause();
+    }
 }
-play.onclick=toggle; hero.onclick=toggle;
-audio.onplay=()=>{play.textContent="Ⅱ";hero.textContent="Ⅱ";state.textContent="PLAYING"};
-audio.onpause=()=>{play.textContent="▶";hero.textContent="▶";state.textContent="PAUSED"};
-audio.ontimeupdate=()=>{
- if(audio.duration)seek.value=audio.currentTime/audio.duration*100;
- time.textContent=fmt(audio.currentTime)+" / "+fmt(audio.duration);
-};
-seek.oninput=()=>{if(audio.duration)audio.currentTime=seek.value/100*audio.duration};
-document.getElementById("back").onclick=()=>audio.currentTime=Math.max(0,audio.currentTime-10);
-document.getElementById("forward").onclick=()=>audio.currentTime=Math.min(audio.duration||0,audio.currentTime+10);
+
+
+play.onclick =
+    toggleMusic;
+
+hero.onclick =
+    toggleMusic;
+
+
+audio.addEventListener(
+    "play",
+    () => {
+
+        play.textContent =
+            "Ⅱ";
+
+        hero.textContent =
+            "Ⅱ";
+
+        state.textContent =
+            "PLAYING";
+
+    }
+);
+
+
+audio.addEventListener(
+    "pause",
+    () => {
+
+        play.textContent =
+            "▶";
+
+        hero.textContent =
+            "▶";
+
+        state.textContent =
+            "PAUSED";
+
+    }
+);
+
+
+audio.addEventListener(
+    "timeupdate",
+    () => {
+
+        if (audio.duration) {
+
+            seek.value =
+                (
+                    audio.currentTime /
+                    audio.duration
+                ) * 100;
+        }
+
+        time.textContent =
+            formatTime(
+                audio.currentTime
+            )
+            +
+            " / "
+            +
+            formatTime(
+                audio.duration
+            );
+    }
+);
+
+
+seek.addEventListener(
+    "input",
+    () => {
+
+        if (audio.duration) {
+
+            audio.currentTime =
+                (
+                    seek.value / 100
+                )
+                *
+                audio.duration;
+        }
+    }
+);
+
+
+document
+    .getElementById("back")
+    .onclick = () => {
+
+        audio.currentTime =
+            Math.max(
+                0,
+                audio.currentTime - 10
+            );
+    };
+
+
+document
+    .getElementById("forward")
+    .onclick = () => {
+
+        audio.currentTime =
+            Math.min(
+                audio.duration || 0,
+                audio.currentTime + 10
+            );
+    };
+
+
+/* =====================================================
+   SMOOTH SNOW
+===================================================== */
+
+const snow =
+    document.getElementById("snow");
+
+
+const isMobile =
+    window.innerWidth <= 600;
+
+
+/*
+    Desktop: 140 bông
+    Mobile: 90 bông
+
+    Dày nhưng nhẹ hơn 200+
+*/
+
+const amount =
+    isMobile ? 90 : 140;
+
+
+const fragment =
+    document.createDocumentFragment();
+
+
+for (
+    let i = 0;
+    i < amount;
+    i++
+) {
+
+    const flake =
+        document.createElement("span");
+
+
+    flake.className =
+        "snowflake";
+
+
+    /*
+        Trộn tuyết ❄
+        với hạt nhỏ •
+    */
+
+    flake.textContent =
+        Math.random() > .45
+        ? "❄"
+        : "•";
+
+
+    /*
+        Vị trí ngang
+    */
+
+    flake.style.left =
+        Math.random() * 100
+        + "vw";
+
+
+    /*
+        Kích thước
+    */
+
+    flake.style.fontSize =
+        (
+            Math.random() * 9
+            + 5
+        )
+        + "px";
+
+
+    /*
+        Độ trong suốt
+    */
+
+    flake.style.opacity =
+        Math.random() * .5
+        + .3;
+
+
+    /*
+        Tốc độ
+    */
+
+    flake.style.animationDuration =
+        (
+            Math.random() * 6
+            + 7
+        )
+        + "s";
+
+
+    /*
+        Cho tuyết có sẵn
+        khi mở trang
+    */
+
+    flake.style.animationDelay =
+        -(
+            Math.random() * 12
+        )
+        + "s";
+
+
+    fragment.appendChild(
+        flake
+    );
+}
+
+
+/*
+    Chỉ append DOM một lần
+    => nhẹ hơn
+*/
+
+snow.appendChild(
+    fragment
+);
+
 </script>
-</body>
-</html>;
-</script>
+
 </body>
 </html>
