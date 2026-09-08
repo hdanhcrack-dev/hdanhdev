@@ -2,112 +2,161 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>HDanh • Official</title>
-<meta name="description" content="Trang chính thức của HDanh">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HDanh • Music</title>
+<meta name="description" content="HDanh • Anime • Music">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="HDanh • Official">
-<meta property="og:description" content="Chào mừng đến với trang của HDanh">
+<meta property="og:title" content="HDanh • Music">
+<meta property="og:description" content="HDanh • Anime • Music">
 <meta property="og:image" content="https://hdanhcrack-dev.github.io/hdanhdev/thumb.jpg">
-<meta property="og:image:alt" content="HDanh">
 <meta property="og:url" content="https://hdanhcrack-dev.github.io/hdanhdev/">
 <meta property="og:site_name" content="HDanh">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="HDanh • Official">
-<meta name="twitter:description" content="Chào mừng đến với trang của HDanh">
-<meta name="twitter:image" content="https://hdanhcrack-dev.github.io/hdanhdev/thumb.jpg">
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
 body{
-  min-height:100vh;
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
-  background:
-    radial-gradient(circle at 50% 15%,#27304a 0,transparent 32%),
-    radial-gradient(circle at 10% 90%,#171d31 0,transparent 30%),
-    #07080d;
-  overflow-x:hidden;
+ min-height:100vh;color:#fff;font-family:Arial,sans-serif;
+ background:#05060a;overflow-x:hidden;
 }
 body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;
-  background-image:linear-gradient(#fff 1px,transparent 1px),
-                   linear-gradient(90deg,#fff 1px,transparent 1px);
-  background-size:42px 42px;
+ content:"";position:fixed;inset:0;z-index:-2;
+ background:
+ radial-gradient(circle at 50% 5%,#6674c933,transparent 28%),
+ radial-gradient(circle at 10% 80%,#33406b22,transparent 30%),#05060a;
 }
-.wrap{width:min(92%,760px);margin:auto;padding:55px 0 45px;text-align:center}
-.badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:8px 14px;border:1px solid #ffffff22;border-radius:999px;
-  background:#ffffff0b;backdrop-filter:blur(10px);
-  color:#d8dbe7;font-size:13px;letter-spacing:1px;
+body:after{
+ content:"";position:fixed;inset:0;z-index:-1;opacity:.06;pointer-events:none;
+ background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);
+ background-size:45px 45px;
 }
-.dot{width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 14px #fff}
-.hero{margin-top:22px;position:relative}
-.hero:after{
-  content:"";position:absolute;left:10%;right:10%;bottom:-25px;height:70px;
-  background:#8b9cff33;filter:blur(35px);z-index:-1
+.app{width:min(94%,780px);margin:auto;padding:30px 0 55px}
+.top{
+ display:flex;justify-content:space-between;align-items:center;
+ padding:10px 4px 24px
 }
-.thumb{
-  width:100%;max-height:68vh;object-fit:cover;display:block;
-  border-radius:24px;border:1px solid #ffffff20;
-  box-shadow:0 25px 80px #000b,0 0 45px #7f8cff22;
+.logo{font-weight:800;letter-spacing:3px}
+.status{font-size:12px;color:#aeb4c6}
+.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#fff;margin-right:6px;box-shadow:0 0 12px #fff}
+.card{
+ padding:18px;border:1px solid #ffffff17;border-radius:28px;
+ background:#ffffff08;backdrop-filter:blur(18px);
+ box-shadow:0 30px 90px #000b;
 }
-h1{
-  margin-top:30px;font-size:clamp(38px,9vw,68px);
-  letter-spacing:5px;text-transform:uppercase;
-  text-shadow:0 0 28px #aeb8ff55;
+.cover{
+ position:relative;overflow:hidden;border-radius:21px;
+ aspect-ratio:16/10;background:#10121a
 }
-.sub{margin-top:10px;color:#aeb3c2;font-size:16px}
-.buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-.btn{
-  color:#fff;text-decoration:none;padding:13px 22px;border-radius:13px;
-  border:1px solid #ffffff20;background:#ffffff0b;
-  backdrop-filter:blur(10px);transition:.2s;
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.cover:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(180deg,transparent 50%,#000b 100%);
+ pointer-events:none
 }
-.btn:hover{transform:translateY(-2px);background:#ffffff14;border-color:#ffffff38}
-.btn.primary{background:#fff;color:#080910;border-color:#fff;font-weight:700}
-.info{
-  margin-top:34px;padding:20px;border:1px solid #ffffff14;border-radius:18px;
-  background:#ffffff07;text-align:left;backdrop-filter:blur(12px)
+.center{
+ position:absolute;inset:0;display:grid;place-items:center;z-index:2
 }
-.info strong{display:block;margin-bottom:7px}
-.info span{color:#9da3b5;font-size:14px;line-height:1.6}
-footer{margin-top:34px;color:#626879;font-size:12px}
-@media(max-width:520px){
-  .wrap{padding-top:35px}
-  .thumb{border-radius:18px}
-  h1{letter-spacing:3px}
+.play{
+ width:74px;height:74px;border:1px solid #ffffff55;border-radius:50%;
+ background:#ffffffdd;color:#090a0f;font-size:25px;padding-left:4px;
+ cursor:pointer;box-shadow:0 0 40px #fff3;transition:.2s
 }
+.play:hover{transform:scale(1.08)}
+.details{padding:24px 4px 4px}
+h1{font-size:clamp(34px,8vw,58px);letter-spacing:4px}
+.subtitle{color:#969cad;margin-top:7px}
+.player{
+ margin-top:22px;padding:18px;border:1px solid #ffffff14;
+ border-radius:20px;background:#0005
+}
+.track{display:flex;justify-content:space-between;gap:15px;font-size:14px}
+.track span:last-child{color:#8e96a9}
+input[type=range]{width:100%;margin:17px 0 8px;accent-color:#fff}
+.controls{display:flex;align-items:center;gap:14px}
+.small{
+ width:42px;height:42px;border-radius:50%;border:1px solid #ffffff20;
+ background:#ffffff0a;color:#fff;cursor:pointer
+}
+.big{width:50px;height:50px;background:#fff;color:#08090d}
+.time{font-size:12px;color:#7f8799;margin-left:auto}
+.note{margin-top:18px;font-size:12px;color:#72798a;line-height:1.5}
+footer{text-align:center;color:#555c6d;font-size:12px;margin-top:25px}
 </style>
 </head>
-
 <body>
-<main class="wrap">
-  <div class="badge"><span class="dot"></span> HDANH • OFFICIAL</div>
+<div class="app">
+  <header class="top">
+    <div class="logo">Ph Ngocc Nhii</div>
+    <div class="status"><i></i>ONLINE</div>
+  </header>
 
-  <section class="hero">
-    <img class="thumb" src="thumb.jpg" alt="HDanh">
+  <section class="card">
+    <div class="cover">
+      <img src="thumb.jpg" alt="Ngocc Nhii">
+      <div class="center">
+        <button class="play" id="heroPlay" aria-label="Phát nhạc">▶</button>
+      </div>
+    </div>
+
+    <div class="details">
+      <h1>HDanh</h1>
+      <div class="subtitle">Haa Hoangg Danhh Kiss Ph Ngoc Nhii</div>
+
+      <div class="player">
+        <div class="track">
+          <span id="songName">Haa Hoangg Danhh</span>
+          <span id="state">PAUSED</span>
+        </div>
+
+        <input id="seek" type="range" min="0" max="100" value="0">
+
+        <div class="controls">
+          <button class="small" id="back">↶</button>
+          <button class="small big" id="play">▶</button>
+          <button class="small" id="forward">↷</button>
+          <span class="time" id="time">00:00 / 00:00</span>
+        </div>
+
+        <div class="note">
+          Muốn phát nhạc: đặt file <b>music.mp3</b> cùng thư mục với
+          <b>index.html</b> và <b>thumb.jpg</b>.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <h1>HDanh</h1>
-  <p class="sub">Ph Ngoc Nhiii  ✦</p>
+  <footer>© 2026 HDanh • Made for mobile</footer>
+</div>
 
-  <div class="buttons">
-    <a class="btn primary" href="#about">Hotwar HDanh</a>
-    <a class="btn" href="https://hdanhcrack-dev.github.io/hdanhdev/">Trang chủ</a>
-  </div>
+<audio id="audio" preload="metadata" src="music.mp3"></audio>
 
-  <section class="info" id="about">
-    <strong>✨ HDanh</strong>
-    <span>Ank La Haa Hoanq Danhh Withlove Ngocc Nhii </span>
-  </section>
+<script>
+const audio=document.getElementById("audio");
+const play=document.getElementById("play");
+const hero=document.getElementById("heroPlay");
+const seek=document.getElementById("seek");
+const state=document.getElementById("state");
+const time=document.getElementById("time");
 
-  <footer>© Yêu Em 4 Mùa</footer>
-</main>
+function fmt(s){
+ if(!isFinite(s))return"00:00";
+ s=Math.floor(s);return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+}
+function toggle(){
+ if(audio.paused){
+   audio.play().catch(()=>{});
+ }else audio.pause();
+}
+play.onclick=toggle; hero.onclick=toggle;
+audio.onplay=()=>{play.textContent="Ⅱ";hero.textContent="Ⅱ";state.textContent="PLAYING"};
+audio.onpause=()=>{play.textContent="▶";hero.textContent="▶";state.textContent="PAUSED"};
+audio.ontimeupdate=()=>{
+ if(audio.duration)seek.value=audio.currentTime/audio.duration*100;
+ time.textContent=fmt(audio.currentTime)+" / "+fmt(audio.duration);
+};
+seek.oninput=()=>{if(audio.duration)audio.currentTime=seek.value/100*audio.duration};
+document.getElementById("back").onclick=()=>audio.currentTime=Math.max(0,audio.currentTime-10);
+document.getElementById("forward").onclick=()=>audio.currentTime=Math.min(audio.duration||0,audio.currentTime+10);
+</script>
 </body>
 </html>
